@@ -48,7 +48,7 @@ export PATH=~/.npm-global/bin:$PATH
 # --git-dir    : this is where the History lives
 # --work-tree  : this is where the snapshot (working tree) lives
 # Note: ~/.dotfiles is a bare git repo
-alias dot='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias dots='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 alias zshconfig="nvim ~/.zshrc"
 alias vim="nvim"
