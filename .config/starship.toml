@@ -1,0 +1,32 @@
+# Inserts a blank line between shell prompts
+add_newline = false
+
+[line_break]
+disabled = false
+
+[character]
+# Replace the "❯" symbol in the prompt with "➜"
+# success_symbol = "[➜](bold green)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
+
+[directory]
+truncate_to_repo = false
+truncation_length = 8
+truncation_symbol = "…/"
+fish_style_pwd_dir_length = 1
+
+[git_status]
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked = "?${count}"
+modified = "!${count}"
+staged = "+${count}"
+renamed = "»${count}"
+deleted = "x${count}"
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = "[🍒 PICKING](bold red)"
+
+[package]
+disabled = false
