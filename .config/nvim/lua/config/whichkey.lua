@@ -62,6 +62,7 @@ wk.setup({
 })
 
 wk.register({
+	["#"] = { "!!toilet -f pagga<CR>", "Make line pretty" },
 	["/"] = {
 		"<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find({layout_strategy='bottom_pane'})<cr>",
 		"Search (Buffer)",
