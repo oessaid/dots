@@ -30,7 +30,7 @@ dots config --local status.showUntrackedFiles no
 
 ## Usage
 
-Updating dotfiles and pushing changes becomes vey easy:
+Updating dotfiles and pushing changes becomes very easy:
 
 ```sh
 dots status
