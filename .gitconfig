@@ -1,0 +1,44 @@
+[user]
+	name = Omar Essaid
+	email = omar.essaid@gmail.com
+
+[alias]
+	lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+	lg3 = log --graph --abbrev-commit --decorate=no --date=format:'%Y-%m-%d %H:%I:%S' --format=format:'%C(03)%>|(26)%h%C(reset)  %C(04)%ad%C(reset)  %C(green)%<(16,trunc)%an%C(reset)  %C(bold 1)%d%C(reset) %C(bold 0)%>|(1)%s%C(reset)' --all
+	lg4 = log --graph --abbrev-commit --decorate --date=format:'%Y-%m-%d %H:%I:%S' --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(dim white) - %C(dim white)%ar%C(reset) - %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	lg = !"git lg4"
+	st = "status -s"
+	co = !"gitmoji -c"
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
+; From https://github.com/dandavison/delta
+[core]
+  pager = delta
+	excludesfile = /home/omar/.gitignore_global
+  editor = nvim
+
+[delta]
+    ; plus-color = "#012800"
+    ; minus-color = "#340001"
+	; minus-style = syntax "#ea6962"
+    ; plus-style = syntax "#a9b665"
+	; plus-style = syntax "#012800"
+    ; minus-style = syntax "#340001"
+    syntax-theme = Nord
+    side-by-side = true
+    line-numbers = true
+
+[interactive]
+    diffFilter = delta --color-only
+
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
+
