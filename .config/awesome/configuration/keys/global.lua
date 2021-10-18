@@ -18,6 +18,13 @@ local global_keys = awful.util.table.join(
 
 	awful.key({ modkey, "Control" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
 
+	awful.key({ modkey }, "Escape", function()
+		awful.spawn.with_shell("xkb-switch -n")
+	end, {
+		description = "change input source",
+		group = "awesome",
+	}),
+
 	awful.key({ modkey, "Shift" }, "l", function()
 		awful.tag.incmwfact(0.005)
 	end, {
@@ -50,7 +57,7 @@ local global_keys = awful.util.table.join(
 
 	awful.key(
 		{ modkey },
-		"Escape",
+		"'",
 		awful.tag.history.restore,
 		{ description = "alternate between current and previous tag", group = "tag" }
 	),
