@@ -25,6 +25,13 @@ local global_keys = awful.util.table.join(
 		group = "awesome",
 	}),
 
+	awful.key({ modkey }, "f", function()
+		awful.spawn(apps.default.terminal .. " -e " .. apps.default.file_manager)
+	end, {
+		description = "File explorer",
+		group = "awesome",
+	}),
+
 	awful.key({ modkey, "Shift" }, "l", function()
 		awful.tag.incmwfact(0.005)
 	end, {
@@ -279,13 +286,6 @@ local global_keys = awful.util.table.join(
 		awful.spawn(apps.default.terminal)
 	end, {
 		description = "open default terminal",
-		group = "launcher",
-	}),
-
-	awful.key({ modkey, "Shift" }, "e", function()
-		awful.spawn(apps.default.file_manager)
-	end, {
-		description = "open default file manager",
 		group = "launcher",
 	}),
 

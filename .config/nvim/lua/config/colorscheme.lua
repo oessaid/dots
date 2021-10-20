@@ -34,11 +34,14 @@ require("github-theme").setup({
 	variable_style = "NONE",
 	dark_float = true,
 	-- hide_inactive_statusline = false,
+	dark_sidebar = true,
 	sidebars = dark_sidebars,
 	-- Change the "hint" color to the "orange" color, and make the "error" color bright red
 	colors = {
-		-- hint = "orange",
-		-- error = "red",
+		warning = "yellow",
+		info = "blue",
+		hint = "orange",
+		error = "red",
 		pmenu = {
 			-- select = "#044289",
 			select = "#264466",

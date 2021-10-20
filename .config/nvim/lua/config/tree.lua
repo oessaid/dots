@@ -1,6 +1,9 @@
 vim.g.nvim_tree_disable_window_picker = 1 -- 0 by default, will disable the window picker.
 vim.g.nvim_tree_ignore = { ".git", "node_modules", ".cache", ".meta" }
 
+-- require("nvim-tree.view").View.winopts.relativenumber = true
+-- require("nvim-tree.view").View.winopts.number = true
+
 require("nvim-tree").setup({
 	-- disables netrw completely
 	disable_netrw = true,
@@ -31,7 +34,7 @@ require("nvim-tree").setup({
 	-- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
 	update_focused_file = {
 		-- enables the feature
-		enable = true,
+		enable = false,
 		-- update the root directory of the tree to the one of the folder containing the file if the file is not under the current root directory
 		-- only relevant when `update_focused_file.enable` is true
 		update_cwd = false,

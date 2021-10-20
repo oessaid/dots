@@ -28,6 +28,7 @@ wk.setup({
 		-- ["<space>"] = "SPC",
 		["<cr>"] = "RET",
 		["<tab>"] = "TAB",
+		["<space>"] = "SPC",
 	},
 	icons = {
 		breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
@@ -62,80 +63,105 @@ wk.setup({
 })
 
 wk.register({
-	["#"] = { "!!toilet -f pagga<CR>", "Make line pretty" },
+	["#"] = {
+		name = "Pretty",
+		t = { "!!toilet -f pagga<CR>", "Toilet" },
+		f = { "!!figlet<CR>", "Figlet" },
+		c = { "!!cowsay -n<CR>", "Cowsay" },
+	},
+	["w"] = { ":e ~/todo.md<CR>", "TODO List" },
+
+	e = {
+		name = "File Tree",
+		e = { ":NvimTreeToggle<CR>", "Open" },
+		-- h = { ":NvimTreeFocus<CR>", "Open" },
+		r = { ":NvimTreeRefresh<CR>", "Refresh" },
+		f = { ":NvimTreeFindFile<CR>", "Find in tree" },
+	},
+
+	t = { ":ToggleTerm<cr>", "Terminal" },
+
+	["<space>"] = { "<cmd>lua vim.lsp.buf.definition()<CR>", "LSP: Definition" },
+	["?"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "LSP: Hover" },
+	["*"] = {
+		"<cmd>lua require('telescope.builtin').lsp_references()<CR>",
+		"LSP: References",
+	},
+	-- r = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
 	["/"] = {
 		"<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find({layout_strategy='bottom_pane'})<cr>",
 		"Search (Buffer)",
 	},
-	["<space>"] = { "<cmd>lua vim.lsp.buf.definition()<CR>", "LSP: Definition" },
-	["?"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "LSP: Hover" },
-	["*"] = {
-		"<cmd>lua require('telescope.builtin').lsp_references(require('telescope.themes').get_cursor({}))<CR>",
-		"LSP: References",
-	},
-	["w"] = { ":e ~/todo.md<CR>", "TODO List" },
-	e = {
-		name = "File Tree",
-		e = { ":NvimTreeFocus<CR>", "Open" },
-		r = { ":NvimTreeRefresh<CR>", "Refresh" },
-	},
-	b = {
-		name = "Debugger",
-		f = { "<cmd>lua require('telescope').extensions.dap.commands()<cr>", "Commands" },
-		t = { "<cmd>lua require('dapui').toggle()<cr>", "Toggle" },
-		p = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", "Breakpoint" },
-		c = { "<cmd>lua require('dap').continue()<cr>", "Continue" },
-		i = { "<cmd>lua require('dap').step_into()<cr>", "Step Into" },
-		o = { "<cmd>lua require('dap').step_over()<cr>", "Step Over" },
-		x = { "<cmd>lua require('dap').repl.open()<cr>", "Execute (REPL)" },
-		r = { ":RustDebuggables<cr>", "Rust: Debuggables" },
-	},
-	t = { ":ToggleTerm<cr>", "Terminal" },
-	s = {
-		name = "LSP",
-		["?"] = { "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})<cr>", "Diagnostics (Line)" },
-		a = {
-			"<cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor({}))<CR>",
-			"Actions",
-		},
-		s = { ":SymbolsOutline<CR>", "Symbols" },
-		d = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "Diagnostics (Buffer)" },
-		D = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "Diagnostics (Workspace)" },
-		r = {
-			name = "Rust",
-			r = { ":RustRunnables<cr>", "Rust: Runnables" },
-			["?"] = { "<cmd>lua require'rust-tools.hover_actions'.hover_actions()<cr>", "Rust: Hover Actions" },
-		},
-	},
+
 	f = {
 		name = "Find", -- optional group name
 		f = {
 			"<cmd>lua require('telescope.builtin').find_files({hidden=true, no_ignore=true})<cr>",
 			"File",
 		},
-		l = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffer" },
-		h = { "<cmd>lua require('telescope.builtin').help_tags()<cr>", "Help Tags" },
-		w = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Word (Project)" },
 		d = { "<cmd>lua require('telescope.builtin').lsp_document_diagnostics()<cr>", "Diagnostics (Buffer)" },
 		D = { "<cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<cr>", "Diagnostics (Workspace)" },
+		u = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffer" },
+		h = { "<cmd>lua require('telescope.builtin').help_tags()<cr>", "Help Tags" },
+		w = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "Word (Project)" },
 		c = { "<cmd>lua require('telescope.builtin').git_commits()<cr>", "Commits" },
 		b = { "<cmd>lua require('telescope.builtin').git_branches()<cr>", "Branches" },
 	},
-	d = {
-		name = "Diff",
-		d = { ":Gdiffsplit!<cr>", "3-way diff" },
-		r = { ":diffupdate<cr>", "Refresh" },
-		l = { ":diffget //3<cr>", "Get right (merge copy)" },
-		h = { ":diffget //2<cr>", "Get left (target copy)" },
-		w = { ":Gwrite<cr>", "Write to index and exit" },
-		j = { "]c", "Next conflict" },
-		k = { "[c", "Previous conflict" },
+
+	s = {
+		name = "LSP",
+		a = {
+			"<cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor({}))<CR>",
+			"Actions",
+		},
+		s = { ":SymbolsOutline<CR>", "Symbols" },
+		i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Implementation" },
+		r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+		["?"] = {
+			"<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})<cr>",
+			"Diagnostics (Line)",
+		},
+		d = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "Diagnostics (Buffer)" },
+		-- from Buffer diagnostics, `m` switches to Workspace diagnostics mode
+		-- w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "Diagnostics (Workspace)" },
+		j = { "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", "Next Diagnostic" },
+		k = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
+		-- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Actions" },
+		-- g = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help" },
+		-- r = {
+		-- 	name = "Rust",
+		-- 	r = { ":RustRunnables<cr>", "Rust: Runnables" },
+		-- 	["?"] = { "<cmd>lua require'rust-tools.hover_actions'.hover_actions()<cr>", "Rust: Hover Actions" },
+		-- },
 	},
+
+	b = {
+		name = "Debugger",
+		b = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", "Breakpoint" },
+		t = { "<cmd>lua require('dapui').toggle()<cr>", "Toggle" },
+		c = { "<cmd>lua require('dap').continue()<cr>", "Continue" },
+		i = { "<cmd>lua require('dap').step_into()<cr>", "Step Into" },
+		o = { "<cmd>lua require('dap').step_over()<cr>", "Step Over" },
+		x = { "<cmd>lua require('dap').repl.open()<cr>", "Execute (REPL)" },
+		r = { ":RustDebuggables<cr>", "Rust: Debuggables" },
+		["?"] = { "<cmd>lua require('telescope').extensions.dap.commands()<cr>", "Commands" },
+	},
+
 	g = {
 		name = "Git",
+		g = {
+			name = "Diff",
+			d = { ":Gdiffsplit!<cr>", "3-way diff" },
+			p = { ":DiffviewOpen<cr>", "Diff View (Project)" },
+			r = { ":diffupdate<cr>", "Refresh" },
+			l = { ":diffget //3<cr>", "Get right (merge copy)" },
+			h = { ":diffget //2<cr>", "Get left (target copy)" },
+			w = { ":Gwrite<cr>", "Write to index and exit" },
+			j = { "]c", "Next conflict" },
+			k = { "[c", "Previous conflict" },
+		},
 		b = { ":Octo ", "GitHub" },
 		s = { ":Git<cr>", "Status" },
-		v = { ":DiffviewOpen<cr>", "Diff View (Project)" },
 		-- l = { "<cmd>lua require('config.terminal').gitlog_toggle()<CR>", "Log" },
 		l = { ":GV --all<cr>", "Log" },
 		H = { ":DiffviewFileHistory<cr>", "File History" },
@@ -156,6 +182,7 @@ wk.register({
 			-- r = { "<cmd>lua require'gitsigns'.reset_hunk({vim.fn.line('.'), vim.fn.line('v')})<CR>" },
 		},
 	},
+
 	p = { "<cmd>lua require('telescope.builtin').builtin()<cr>", "Available pickers (Telescope)" },
 	x = { "<cmd>lua require('telescope').extensions.bookmarks.bookmarks()<cr>", "Bookmarks (Firefox)" },
 }, {

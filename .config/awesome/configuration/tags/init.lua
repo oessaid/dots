@@ -16,7 +16,7 @@ local tags = {
 		type = "sandbox",
 		icon = icons.sandbox,
 		default_app = apps.default.sandbox,
-		layout = awful.layout.suit.max,
+		layout = awful.layout.suit.tile,
 		gap = beautiful.useless_gap,
 	},
 	{

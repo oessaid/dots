@@ -20,14 +20,15 @@ require("telescope").setup({
 	},
 	pickers = {
 		lsp_references = {
-			layout_strategy = "vertical",
-			-- theme = "dropdown",
-			-- layout_config = {
-			-- 	width = 0.75,
-			-- },
+			-- layout_strategy = "vertical",
+			theme = "cursor",
+			layout_config = {
+				width = 0.8,
+			},
 		},
 		find_files = {
 			theme = "dropdown",
+			sorting_strategy = "descending",
 			layout_config = {
 				width = 0.4,
 			},
@@ -66,13 +67,13 @@ require("telescope").setup({
 			i = {
 				["<C-j>"] = require("telescope.actions").preview_scrolling_down,
 				["<C-k>"] = require("telescope.actions").preview_scrolling_up,
-				["<C-x>"] = require("telescope.actions").send_selected_to_qflist
+				["<C-q>"] = require("telescope.actions").send_selected_to_qflist
 					+ require("telescope.actions").open_qflist,
 			},
 			n = {
 				["<C-j>"] = require("telescope.actions").preview_scrolling_down,
 				["<C-k>"] = require("telescope.actions").preview_scrolling_up,
-				["<C-x>"] = require("telescope.actions").send_selected_to_qflist
+				["<C-q>"] = require("telescope.actions").send_selected_to_qflist
 					+ require("telescope.actions").open_qflist,
 			},
 		},

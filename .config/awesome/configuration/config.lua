@@ -64,7 +64,8 @@ return {
 			valid_picture_formats = { "jpg", "png", "jpeg" },
 			-- Leave this table empty for full auto scheduling
 			wallpaper_schedule = {
-				["00:00:00"] = "nord-playstation.png",
+				-- ["00:00:00"] = "nord-playstation.png",
+				["00:00:00"] = "c.png",
 				-- ["06:22:00"] = "darker-dots.png",
 				-- ["12:00:00"] = "darker-dots.png",
 				-- ["17:58:00"] = "darker-dots.png",
@@ -99,8 +100,8 @@ return {
 			bg_dir = nil,
 			-- Will look for this image file under 'bg_dir'
 			-- bg_image = "darker-dots.png",
-			-- bg_image = "nord-playstation.png",
-			bg_image = "kurtco.jpg",
+			bg_image = "nord-playstation.png",
+			-- bg_image = "kurtco.jpg",
 			-- Blur lockscreen background
 			blur_background = false,
 			-- Blurred/filtered background image path (No reason to change this)

@@ -18,6 +18,8 @@ utils.map("n", "<leader>j", "<C-W><C-J>")
 utils.map("n", "<leader>k", "<C-W><C-K>")
 utils.map("n", "<leader>l", "<C-W><C-L>")
 utils.map("n", "<leader>h", "<C-W><C-H>")
+utils.map("n", "<C-j>", "<C-d>")
+utils.map("n", "<C-k>", "<C-u>")
 
 -- copy pasting
 vim.cmd('nnoremap <leader>y "+y')

@@ -150,6 +150,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/omar/.local/share/nvim/site/pack/packer/start/null-ls.nvim"
   },
+  ["nvim-bqf"] = {
+    loaded = true,
+    path = "/home/omar/.local/share/nvim/site/pack/packer/start/nvim-bqf"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/omar/.local/share/nvim/site/pack/packer/start/nvim-cmp"
@@ -158,6 +162,7 @@ _G.packer_plugins = {
     commands = { "CodeActionMenu" },
     loaded = false,
     needs_bufread = true,
+    only_cond = false,
     path = "/home/omar/.local/share/nvim/site/pack/packer/opt/nvim-code-action-menu"
   },
   ["nvim-colorizer.lua"] = {
@@ -267,6 +272,10 @@ _G.packer_plugins = {
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/omar/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+  },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/home/omar/.local/share/nvim/site/pack/packer/start/vim-surround"
   },
   ["vim-vsnip"] = {
     loaded = true,

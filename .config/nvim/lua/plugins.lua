@@ -18,6 +18,8 @@ return require("packer").startup({
 
 		-- Utils
 		use("norcalli/nvim-colorizer.lua")
+		use("tpope/vim-surround")
+		use({ "kevinhwang91/nvim-bqf" })
 
 		-- Status line, tabline
 		use({

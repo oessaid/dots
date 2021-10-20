@@ -135,7 +135,7 @@ local awesome_overrides = function(theme)
 	theme.border_radius = dpi(9)
 
 	-- Decorations
-	theme.useless_gap = dpi(4)
+	theme.useless_gap = dpi(9)
 	theme.client_shape_rectangle = gears.shape.rectangle
 	theme.client_shape_rounded = function(cr, width, height)
 		gears.shape.rounded_rect(cr, width, height, dpi(6))
@@ -179,10 +179,10 @@ local awesome_overrides = function(theme)
 	-- theme.taglist_bg_occupied = "#ffffff" .. "1A"
 	-- theme.taglist_bg_urgent = "#E91E63" .. "99"
 	-- theme.taglist_bg_focus = theme.background
-	theme.taglist_bg_empty = theme.background .. "99"
-	theme.taglist_bg_occupied = theme.background .. "99"
+	theme.taglist_bg_empty = theme.background
+	theme.taglist_bg_occupied = theme.background
 	theme.taglist_bg_urgent = "#985EFF" .. "99"
-	theme.taglist_bg_focus = theme.background
+	theme.taglist_bg_focus = "#3D4C5F" .. "90"
 	theme.taglist_spacing = dpi(0)
 
 	-- Tasklist

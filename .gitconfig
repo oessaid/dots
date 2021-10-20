@@ -11,13 +11,6 @@
 	st = "status -s"
 	co = !"gitmoji -c"
 
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-
-; From https://github.com/dandavison/delta
 [core]
   pager = delta
 	excludesfile = /home/omar/.gitignore_global
@@ -42,3 +35,8 @@
 [init]
 	defaultBranch = main
 
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
