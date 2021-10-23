@@ -5,7 +5,7 @@ return require("packer").startup({
 
 		-- Dashboard/Projects
 		use({ "glepnir/dashboard-nvim" })
-		use({ "ahmedkhalf/project.nvim" })
+		-- use({ "ahmedkhalf/project.nvim" })
 
 		-- Terminal
 		use({ "akinsho/toggleterm.nvim" })
@@ -18,8 +18,7 @@ return require("packer").startup({
 
 		-- Utils
 		use("norcalli/nvim-colorizer.lua")
-		use("tpope/vim-surround")
-		use({ "kevinhwang91/nvim-bqf" })
+		-- use("tpope/vim-surround")
 
 		-- Status line, tabline
 		use({
@@ -33,8 +32,8 @@ return require("packer").startup({
 			"projekt0n/github-nvim-theme",
 		})
 		-- use("EdenEast/nightfox.nvim")
-		-- use("marko-cerovac/material.nvim")
-		-- use("navarasu/onedark.nvim")
+		use("marko-cerovac/material.nvim")
+		use("navarasu/onedark.nvim")
 		-- use("CantoroMC/ayu-nvim")
 		-- use("eddyekofo94/gruvbox-flat.nvim")
 
@@ -124,9 +123,9 @@ return require("packer").startup({
 		})
 		use("sindrets/diffview.nvim")
 		use("junegunn/gv.vim")
-		use({
-			"pwntester/octo.nvim",
-		})
+		-- use({
+		-- 	"pwntester/octo.nvim",
+		-- })
 
 		-- File Explorer
 		use({

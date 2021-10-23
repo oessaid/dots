@@ -1,12 +1,3 @@
--- vim.g.onedark_style = "darker"
--- -- vim.g.onedark_style = "cool"
--- -- vim.g.onedark_style = "deep"
--- -- vim.g.onedark_style = "warm"
--- -- vim.g.onedark_style = "warmer"
--- -- Nothing from above selected means "default"
--- vim.g.onedark_disable_toggle_style = true
--- require("onedark").setup()
-
 local dark_sidebars = {
 	"qf",
 	"terminal",
@@ -18,6 +9,16 @@ local dark_sidebars = {
 	"GV",
 }
 
+-- vim.g.onedark_style = "darker"
+-- -- vim.g.onedark_style = "cool"
+-- -- vim.g.onedark_style = "deep"
+-- -- vim.g.onedark_style = "warm"
+-- -- vim.g.onedark_style = "warmer"
+-- -- Nothing from above selected means "default"
+-- vim.g.onedark_toggle_style_keymap = "<nop>"
+-- vim.g.onedark_disable_toggle_style = true
+-- require("onedark").setup()
+
 -- vim.g.ayu_mirage = true
 -- vim.cmd([[colorscheme ayu]])
 
@@ -26,16 +27,22 @@ local dark_sidebars = {
 -- vim.api.nvim_command("colorscheme tokyonight")
 
 require("github-theme").setup({
-	theme_style = "dimmed", -- dark, dark_default, dimmed, light, light_default
-	hide_inactive_statusline = false,
+	theme_style = "dark_default", -- dark, dark_default, dimmed, light, light_default
+	transparent = false,
+
+	-- add a thin border to status lines
+	hide_inactive_statusline = true,
+
 	comment_style = "NONE",
-	keyword_style = "NONE",
+	keyword_style = "bold",
 	function_style = "NONE",
 	variable_style = "NONE",
+	msg_area_style = "NONE",
+
 	dark_float = true,
-	-- hide_inactive_statusline = false,
 	dark_sidebar = true,
 	sidebars = dark_sidebars,
+
 	-- Change the "hint" color to the "orange" color, and make the "error" color bright red
 	colors = {
 		warning = "yellow",

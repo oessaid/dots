@@ -7,7 +7,7 @@ theme.icons = theme_dir .. "/icons/"
 theme.font = "Inter Regular 10"
 theme.font_bold = "Inter Bold 10"
 
--- Colorscheme
+-- Colorscheme (Github Dimmed)
 theme.system_black_dark = "#3D4C5F"
 theme.system_black_light = "#56687E"
 

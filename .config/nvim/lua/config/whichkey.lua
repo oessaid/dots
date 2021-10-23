@@ -114,7 +114,7 @@ wk.register({
 			"<cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor({}))<CR>",
 			"Actions",
 		},
-		s = { ":SymbolsOutline<CR>", "Symbols" },
+		s = { ":SymbolsOutline<CR>", "Symbols tree" },
 		i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Implementation" },
 		r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
 		["?"] = {
@@ -123,7 +123,7 @@ wk.register({
 		},
 		d = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "Diagnostics (Buffer)" },
 		-- from Buffer diagnostics, `m` switches to Workspace diagnostics mode
-		-- w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "Diagnostics (Workspace)" },
+		w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "Diagnostics (Workspace)" },
 		j = { "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", "Next Diagnostic" },
 		k = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
 		-- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Actions" },

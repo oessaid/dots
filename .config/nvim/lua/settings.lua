@@ -15,7 +15,7 @@ vim.cmd("au TextYankPost * lua vim.highlight.on_yank {on_visual = false}")
 local M = {}
 M.load_options = function()
 	local default_options = {
-		showmatch = true,
+		showmatch = false,
 		termguicolors = true,
 		mouse = "a",
 		incsearch = true,
@@ -40,7 +40,7 @@ M.load_options = function()
 		splitbelow = true, -- force all horizontal splits to go below current window
 		splitright = true, -- force all vertical splits to go to the right of current window
 		swapfile = false, -- creates a swapfile
-		timeoutlen = 200, -- time to wait for a mapped sequence to complete (in milliseconds)
+		timeoutlen = 300, -- time to wait for a mapped sequence to complete (in milliseconds)
 		title = true, -- set the title of window to the value of the titlestring
 		titlestring = "%<%F%=%l/%L - nvim", -- what the title of the window will be set to
 		-- undodir = CACHE_PATH .. "/undo" -- set an undo directory

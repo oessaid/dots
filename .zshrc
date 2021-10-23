@@ -1,6 +1,7 @@
 # zmodload zsh/zprof
 source $HOME/antigen.zsh
 antigen use oh-my-zsh
+antigen bundle sudo
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-history-substring-search

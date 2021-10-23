@@ -146,13 +146,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/omar/.local/share/nvim/site/pack/packer/start/lualine.nvim"
   },
+  ["material.nvim"] = {
+    loaded = true,
+    path = "/home/omar/.local/share/nvim/site/pack/packer/start/material.nvim"
+  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/home/omar/.local/share/nvim/site/pack/packer/start/null-ls.nvim"
-  },
-  ["nvim-bqf"] = {
-    loaded = true,
-    path = "/home/omar/.local/share/nvim/site/pack/packer/start/nvim-bqf"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -209,9 +209,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/omar/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
-  ["octo.nvim"] = {
+  ["onedark.nvim"] = {
     loaded = true,
-    path = "/home/omar/.local/share/nvim/site/pack/packer/start/octo.nvim"
+    path = "/home/omar/.local/share/nvim/site/pack/packer/start/onedark.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -224,10 +224,6 @@ _G.packer_plugins = {
   ["popup.nvim"] = {
     loaded = true,
     path = "/home/omar/.local/share/nvim/site/pack/packer/start/popup.nvim"
-  },
-  ["project.nvim"] = {
-    loaded = true,
-    path = "/home/omar/.local/share/nvim/site/pack/packer/start/project.nvim"
   },
   ["registers.nvim"] = {
     loaded = true,
@@ -272,10 +268,6 @@ _G.packer_plugins = {
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/omar/.local/share/nvim/site/pack/packer/start/vim-fugitive"
-  },
-  ["vim-surround"] = {
-    loaded = true,
-    path = "/home/omar/.local/share/nvim/site/pack/packer/start/vim-surround"
   },
   ["vim-vsnip"] = {
     loaded = true,

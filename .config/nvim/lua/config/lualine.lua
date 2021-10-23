@@ -145,7 +145,7 @@ local active_sections = {
 		},
 		{
 			function()
-				local msg = "No Active Lsp"
+				local msg = "None"
 				local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
 				local clients = vim.lsp.get_active_clients()
 				if next(clients) == nil then
@@ -166,9 +166,9 @@ local active_sections = {
 			},
 		},
 		{ "filetype" },
-		{ "filesize", color = { fg = colors.comment } },
-		-- "location",
-		-- "progress",
+		-- { "filesize", color = { fg = colors.comment } },
+		-- { "location", color = { fg = colors.comment } },
+		-- { "progress" },
 		{ "o:encoding", color = { fg = colors.comment } },
 		{ "fileformat", icons_enabled = false, color = { fg = colors.comment } },
 	},

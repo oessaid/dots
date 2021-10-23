@@ -25,7 +25,7 @@ local global_keys = awful.util.table.join(
 		group = "awesome",
 	}),
 
-	awful.key({ modkey }, "f", function()
+	awful.key({ modkey }, "e", function()
 		awful.spawn(apps.default.terminal .. " -e " .. apps.default.file_manager)
 	end, {
 		description = "File explorer",

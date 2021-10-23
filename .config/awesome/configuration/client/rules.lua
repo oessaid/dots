@@ -139,7 +139,7 @@ ruled.client.connect_signal("request::rules", function()
 			tag = "1",
 			switch_to_tags = true,
 			size_hints_honor = false,
-			titlebars_enabled = true,
+			titlebars_enabled = false,
 		},
 	})
 

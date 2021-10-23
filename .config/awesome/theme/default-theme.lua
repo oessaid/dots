@@ -156,7 +156,6 @@ local awesome_overrides = function(theme)
 	theme.menu_border_color = theme.background:sub(1, 7) .. "5C"
 
 	-- Tooltips
-
 	theme.tooltip_bg = theme.background
 	theme.tooltip_border_color = theme.transparent
 	theme.tooltip_border_width = 0
