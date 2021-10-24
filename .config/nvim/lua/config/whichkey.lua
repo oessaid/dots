@@ -96,7 +96,8 @@ wk.register({
 	f = {
 		name = "Find", -- optional group name
 		f = {
-			"<cmd>lua require('telescope.builtin').find_files({hidden=true, no_ignore=true})<cr>",
+			-- "<cmd>lua require('telescope.builtin').find_files({hidden=true, no_ignore=true})<cr>",
+			"<cmd>lua require('telescope.builtin').find_files({hidden=true})<cr>",
 			"File",
 		},
 		d = { "<cmd>lua require('telescope.builtin').lsp_document_diagnostics()<cr>", "Diagnostics (Buffer)" },

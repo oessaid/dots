@@ -68,6 +68,10 @@ require("crates").setup({
 })
 
 cmp.setup({
+	completion = {
+		completeopt = "menu,menuone,noinsert",
+	},
+
 	formatting = {
 		format = function(entry, vim_item)
 			local icons = require("lsp.kind").icons
@@ -114,6 +118,8 @@ cmp.setup({
 		{ name = "crates" },
 		{ name = "spell" },
 	},
+
+	-- preselect = cmp.PreselectMode.Item,
 
 	mapping = {
 		-- ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),

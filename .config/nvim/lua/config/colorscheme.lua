@@ -27,7 +27,7 @@ local dark_sidebars = {
 -- vim.api.nvim_command("colorscheme tokyonight")
 
 require("github-theme").setup({
-	theme_style = "dark_default", -- dark, dark_default, dimmed, light, light_default
+	theme_style = "dimmed", -- dark, dark_default, dimmed, light, light_default
 	transparent = false,
 
 	-- add a thin border to status lines

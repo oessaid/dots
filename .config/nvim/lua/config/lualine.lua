@@ -113,26 +113,26 @@ local active_sections = {
 			},
 			cond = conditions.buffer_not_empty,
 		},
-	},
-	lualine_x = {
 		{
 			"branch",
 			icon = "",
 			cond = conditions.hide_in_width,
 			color = {
-				fg = colors.yellow,
+				fg = colors.comment,
 			},
 		},
 		{
 			"diff",
 			symbols = { added = " ", modified = "柳", removed = " " },
 			diff_color = {
-				added = { fg = colors.green },
+				added = { fg = colors.aqua },
 				modified = { fg = colors.orange },
 				removed = { fg = colors.red },
 			},
 			cond = conditions.hide_in_width,
 		},
+	},
+	lualine_x = {
 		{
 			"diagnostics",
 			sources = { "nvim_lsp" },
