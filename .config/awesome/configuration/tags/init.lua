@@ -31,12 +31,14 @@ local tags = {
 	-- 	default_app = apps.default.web_browser,
 	-- 	gap = beautiful.useless_gap,
 	-- },
-	-- {
-	-- 	type = "code",
-	-- 	icon = icons.text_editor,
-	-- 	default_app = apps.default.text_editor,
-	-- 	gap = beautiful.useless_gap,
-	-- },
+	{
+		type = "code",
+		icon = icons.menu,
+		-- default_app = apps.default.text_editor,
+		-- default_app = apps.default.terminal,
+		gap = beautiful.useless_gap,
+		layout = awful.layout.suit.tile,
+	},
 	-- {
 	-- 	type = "files",
 	-- 	icon = icons.file_manager,
@@ -77,10 +79,10 @@ local tags = {
 -- Set tags layout
 tag.connect_signal("request::default_layouts", function()
 	awful.layout.append_default_layouts({
-		awful.layout.suit.spiral.dwindle,
+		-- awful.layout.suit.spiral.dwindle,
 		awful.layout.suit.tile,
 		awful.layout.suit.floating,
-		awful.layout.suit.max,
+		-- awful.layout.suit.max,
 	})
 end)
 

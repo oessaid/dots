@@ -1,0 +1,7 @@
+# vi:filetype=yaml
+BasedOnStyle: Google
+
+# Some folks prefer to write "int& foo" while others prefer "int &foo".
+# I choose "int& foo".
+DerivePointerAlignment: false
+PointerAlignment: Left

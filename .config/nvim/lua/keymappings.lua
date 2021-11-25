@@ -2,7 +2,7 @@ local utils = require("utils")
 
 -- utils.map("n", "<C-l>", "<cmd>noh<CR>") -- Clear highlights
 utils.map("i", "jk", "<Esc>") -- jk to escape
-utils.map("i", "kj", "<Esc>") -- jk to escape
+-- utils.map("i", "kj", "<Esc>") -- jk to escape
 
 -- general maps
 utils.map("n", "st", ":tab split<CR>")

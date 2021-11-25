@@ -100,6 +100,7 @@ wk.register({
 			"<cmd>lua require('telescope.builtin').find_files({hidden=true})<cr>",
 			"File",
 		},
+		q = { "<cmd>lua require('telescope.builtin').quickfix()<cr>", "Quickfix" },
 		d = { "<cmd>lua require('telescope.builtin').lsp_document_diagnostics()<cr>", "Diagnostics (Buffer)" },
 		D = { "<cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<cr>", "Diagnostics (Workspace)" },
 		u = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffer" },
@@ -116,6 +117,7 @@ wk.register({
 			"Actions",
 		},
 		s = { ":SymbolsOutline<CR>", "Symbols tree" },
+		h = { ":ClangdSwitchSourceHeader<CR>", "Toggle Source/Header (C++)" },
 		i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Implementation" },
 		r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
 		["?"] = {

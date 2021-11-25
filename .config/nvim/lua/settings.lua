@@ -4,7 +4,8 @@
 
 vim.cmd("syntax enable")
 vim.cmd("filetype plugin indent on")
-
+-- vim.o.foldmethod = "expr"
+-- vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 -- utils.opt("b", "shiftwidth", indent)
 -- utils.opt("o", "hidden", true)
 -- utils.opt("o", "shiftround", true)
@@ -31,8 +32,9 @@ M.load_options = function()
 		-- },
 		conceallevel = 0, -- so that `` is visible in markdown files
 		fileencoding = "utf-8", -- the encoding written to a file
-		foldmethod = "manual", -- folding set to "expr" for treesitter based folding
-		foldexpr = "", -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
+		foldlevel = 99,
+		foldmethod = "expr", -- folding set to "expr" for treesitter based folding
+		foldexpr = "nvim_treesitter#foldexpr()", -- set to "nvim_treesitter#foldexpr()" for treesitter based folding
 		guifont = "monospace:h17", -- the font used in graphical neovim applications
 		hidden = true, -- required to keep multiple buffers and open multiple buffers
 		hlsearch = true, -- highlight all matches on previous search pattern

@@ -58,6 +58,8 @@ return require("packer").startup({
 			"jose-elias-alvarez/null-ls.nvim",
 			requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		})
+		use("emilienlemaire/clang-tidy.nvim")
+
 		-- use({ "weilbith/nvim-code-action-menu" })
 		use({ "~/Software/nvim-code-action-menu", cmd = "CodeActionMenu" })
 		use({ "kosayoda/nvim-lightbulb" })

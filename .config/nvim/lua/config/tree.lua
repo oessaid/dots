@@ -1,5 +1,5 @@
 vim.g.nvim_tree_disable_window_picker = 1 -- 0 by default, will disable the window picker.
-vim.g.nvim_tree_ignore = { ".git", "node_modules", ".cache", ".meta" }
+vim.g.nvim_tree_ignore = { ".git", "node_modules", ".cache", "*.meta" }
 
 -- require("nvim-tree.view").View.winopts.relativenumber = true
 -- require("nvim-tree.view").View.winopts.number = true

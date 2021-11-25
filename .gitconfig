@@ -1,6 +1,15 @@
 [user]
-	name = Omar Essaid
+	name = oessaid
 	email = omar.essaid@gmail.com
+	signingkey = 4DACD3086800FD76D60BEA19B964BE233B2B3842
+	username = oessaid
+	name = Omar
+
+[commit]
+	gpgsign = true
+
+[gpg]
+	program = /usr/bin/gpg
 
 [alias]
 	lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
@@ -32,6 +41,7 @@
 
 [pull]
 	ff = only
+
 [init]
 	defaultBranch = main
 

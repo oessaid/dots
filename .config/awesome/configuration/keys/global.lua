@@ -46,6 +46,19 @@ local global_keys = awful.util.table.join(
 		group = "layout",
 	}),
 
+	awful.key({ modkey, "Control" }, "u", function()
+		awful.tag.incncol(-1)
+	end, {
+		description = "decrease master width factor",
+		group = "layout",
+	}),
+	awful.key({ modkey, "Control" }, "i", function()
+		awful.tag.incncol(1)
+	end, {
+		description = "decrease master width factor",
+		group = "layout",
+	}),
+
 	awful.key({ modkey }, "o", function()
 		awful.tag.incgap(1)
 	end, {

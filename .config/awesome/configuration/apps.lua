@@ -9,7 +9,7 @@ return {
 		-- Default terminal emulator
 		terminal = "kitty",
 		-- Default web browser
-		web_browser = "firefox",
+		web_browser = "google-chrome",
 		-- Default text editor
 		text_editor = "nvim",
 		-- Default file manager

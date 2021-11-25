@@ -187,8 +187,41 @@ require("lspconfig").omnisharp.setup({
 })
 
 -- C++
+local custom_clangd_attach = function()
+	-- M.common_on_attach(client, bufnr)
+	require("clang-tidy").setup({
+		on_attach = M.common_on_attach,
+		checks = { "*" },
+		args = {
+			"--extra-arg='std=c++17'",
+		},
+	})
+	require("clang-tidy").run()
+end
+
 require("lspconfig").clangd.setup({
+	-- on_attach = custom_clangd_attach,
 	on_attach = M.common_on_attach,
+	cmd = {
+		"clangd",
+		"--background-index",
+		"--suggest-missing-includes",
+		-- -- by default, clang-tidy use -checks=clang-diagnostic-*,clang-analyzer-*
+		-- -- to add more checks, create .clang-tidy file in the root directory
+		-- -- and add Checks key, see https://clang.llvm.org/extra/clang-tidy/
+		"--clang-tidy",
+		"--completion-style=bundled",
+		"--cross-file-rename",
+		"--header-insertion=iwyu",
+	},
+	init_options = {
+		clangdFileStatus = true, -- Provides information about activity on clangd’s per-file worker thread
+		usePlaceholders = true,
+		completeUnimported = true,
+		semanticHighlighting = true,
+	},
+	filetypes = { "c", "cpp", "objc", "objcpp" },
+	single_file_support = true,
 })
 
 -- SQL: doesn't support a lot of features, deactivate it for now
@@ -232,6 +265,7 @@ require("null-ls").config({
 		-- require("null-ls").builtins.formatting.clang_format, -- not required because LSP handles it
 		require("null-ls").builtins.formatting.stylua,
 		require("null-ls").builtins.formatting.shfmt, -- bash support
+		-- require("null-ls").builtins.formatting.rustfmt,
 		require("null-ls").builtins.formatting.prettier.with({
 			command = "prettier",
 			filetypes = {

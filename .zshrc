@@ -23,7 +23,6 @@ bindkey -M vicmd 'j' history-substring-search-down
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
-
 # Vim mode
 bindkey -v
 
@@ -68,6 +67,8 @@ alias tat="tmux a -t"
 alias dbx="dropbox"
 # alias bm="~/bin/fzfbuku"
 # alias color="colorpicker --short --one-shot --preview | xsel -b"
+alias lldb-vscode="/usr/bin/lldb-vscode-10"
+# alias clang="/usr/bin/clang-12"
 
 # Custom fzf command (for hidden files)
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -U -l -g ""' 
@@ -81,5 +82,8 @@ alias luamake=/home/omar/Software/lua-language-server/3rd/luamake/luamake
 # zmodload zsh/complist
 # # # compinit
  
+# Git GPG
+export GPG_TTY=$(tty)
+
 eval "$(starship init zsh)"
 # zprof

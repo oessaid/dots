@@ -73,6 +73,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/omar/.local/share/nvim/site/pack/packer/start/LuaSnip"
   },
+  ["clang-tidy.nvim"] = {
+    loaded = true,
+    path = "/home/omar/.local/share/nvim/site/pack/packer/start/clang-tidy.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/omar/.local/share/nvim/site/pack/packer/start/cmp-buffer"
