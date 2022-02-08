@@ -19,7 +19,7 @@ require("crates").setup({
 		prerelease = "   %s",
 		yanked = "   %s",
 		nomatch = "   No match",
-		update = "   %s",
+		upgrade = "   %s",
 		error = "   Error fetching crate",
 	},
 	highlight = {
@@ -28,7 +28,7 @@ require("crates").setup({
 		prerelease = "CratesNvimPreRelease",
 		yanked = "CratesNvimYanked",
 		nomatch = "CratesNvimNoMatch",
-		update = "CratesNvimUpdate",
+		upgrade = "CratesNvimUpdate",
 		error = "CratesNvimError",
 	},
 	popup = {
@@ -55,7 +55,7 @@ require("crates").setup({
 		keys = {
 			hide = { "q", "<esc>" },
 			select = { "<cr>" },
-			select_dumb = { "s" },
+			select_alt = { "s" },
 			copy_version = { "yy" },
 		},
 	},
@@ -74,17 +74,17 @@ cmp.setup({
 
 	formatting = {
 		format = function(entry, vim_item)
-			local icons = require("lsp.kind").icons
-			vim_item.kind = icons[vim_item.kind]
+			-- local icons = require("lsp.kind").icons
+			-- vim_item.kind = icons[vim_item.kind]
 			vim_item.menu = ({
-				nvim_lsp = "(LSP)",
-				emoji = "(Emoji)",
-				path = "(Path)",
-				calc = "(Calc)",
-				cmp_tabnine = "(Tabnine)",
-				vsnip = "(Snippet)",
-				luasnip = "(Snippet)",
-				buffer = "(Buffer)",
+				nvim_lsp = "[LSP]",
+				emoji = "[Emoji]",
+				path = "[Path]",
+				calc = "[Calc]",
+				cmp_tabnine = "[Tabnine]",
+				vsnip = "[Snippet]",
+				luasnip = "[Snippet]",
+				buffer = "[Buffer]",
 			})[entry.source.name]
 			vim_item.dup = ({
 				buffer = 1,

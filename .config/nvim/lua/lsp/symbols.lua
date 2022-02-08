@@ -2,7 +2,15 @@
 vim.g.symbols_outline = {
 	highlight_hovered_item = true,
 	auto_preview = false,
-	-- width = 20,
+	position = "left",
+	show_symbol_details = true,
+	show_guides = true,
+	show_numbers = false,
+	show_relative_numbers = false,
+	relative_width = true,
+	width = 45,
+	auto_close = false,
+	-- auto_close = true,
 	keymaps = { -- These keymaps can be a string or a table for multiple keys
 		close = { "<Esc>", "q" },
 		goto_location = "<Cr>",

@@ -1,26 +1,58 @@
--- Customizing how diagnostics are displayed
+-- Customize diagnostic signs
+vim.fn.sign_define("DiagnosticSignError", {
+	texthl = "DiagnosticSignError",
+	text = "",
+	numhl = "DiagnosticSignError",
+})
+vim.fn.sign_define("DiagnosticSignWarn", {
+	texthl = "DiagnosticSignWarn",
+	text = "",
+	numhl = "DiagnosticSignWarn",
+})
+vim.fn.sign_define("DiagnosticSignInfo", {
+	texthl = "DiagnosticSignInfo",
+	text = "",
+	numhl = "DiagnosticSignInfo",
+})
+vim.fn.sign_define("DiagnosticSignHint", {
+	texthl = "DiagnosticSignHint",
+	text = "",
+	numhl = "DiagnosticSignHint",
+})
+
+vim.fn.sign_define("LightBulbSign", { text = "" })
+
+-- -- Code Actions lightbulb
+-- LightBulbFunc = function()
+-- 	require("nvim-lightbulb").update_lightbulb({
+-- 		-- Gigantic configuration
+-- 		sign = {
+-- 			enabled = true,
+-- 			-- Priority of the gutter sign
+-- 			priority = 10,
+-- 		},
+-- 	})
+-- end
+-- vim.cmd([[autocmd CursorHold,CursorHoldI * lua LightBulbFunc()]])
+
+-- Global config for diagnostics
 -- prefix = "     ",
 -- symbols = { error = " ", warn = " ", info = " " },
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+vim.diagnostic.config({
+	underline = true,
+	-- virtual_text = false,
 	virtual_text = {
 		prefix = "",
-		spacing = 4,
-		source = "always", -- always | if_many
+		spacing = 2,
+		-- source = "always", -- always | if_many
 	},
-	-- virtual_text = false,
-	-- signs = {
-	-- 	active = true,
-	-- 	values = {
-	-- 		{ name = "LspDiagnosticsSignError", text = "" },
-	-- 		{ name = "LspDiagnosticsSignWarning", text = "" },
-	-- 		{ name = "LspDiagnosticsSignHint", text = "" },
-	-- 		{ name = "LspDiagnosticsSignInformation", text = "" },
-	-- 	},
-	-- },
-	underline = true,
+	signs = true,
 	update_in_insert = false,
 	severity_sort = true,
 })
+-- vim.cmd(
+-- 	[[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope='cursor', source='always'})]]
+-- )
 
 -- Customizing Trouble
 require("trouble").setup({
@@ -28,9 +60,11 @@ require("trouble").setup({
 	height = 10, -- height of the trouble list when position is top or bottom
 	width = 50, -- width of the list when position is left or right
 	icons = true, -- use devicons for filenames
-	mode = "lsp_workspace_diagnostics", -- "lsp_workspace_diagnostics", "lsp_document_diagnostics", "quickfix", "lsp_references", "loclist"
+	mode = "workspace_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
 	fold_open = "", -- icon used for open folds
 	fold_closed = "", -- icon used for closed folds
+	group = true, -- group results by file
+	padding = true, -- add an extra new line on top of the list
 	action_keys = { -- key mappings for actions in the trouble list
 		-- map to {} to remove a mapping, for example:
 		-- close = {},
@@ -55,7 +89,7 @@ require("trouble").setup({
 	indent_lines = true, -- add an indent guide below the fold icons
 	auto_open = false, -- automatically open the list when you have diagnostics
 	auto_close = false, -- automatically close the list when you have no diagnostics
-	auto_preview = false, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
+	auto_preview = true, -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
 	auto_fold = false, -- automatically fold a file trouble list at creation
 	signs = {
 		-- icons / text used for a diagnostic
@@ -65,54 +99,5 @@ require("trouble").setup({
 		information = "",
 		other = "﫠",
 	},
-	use_lsp_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
+	use_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
 })
-
--- vim.fn.sign_define(
--- 	"LspDiagnosticsSignError",
--- 	{ texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError" }
--- )
--- vim.fn.sign_define(
--- 	"LspDiagnosticsSignWarning",
--- 	{ texthl = "LspDiagnosticsSignWarning", text = "", numhl = "LspDiagnosticsSignWarning" }
--- )
--- vim.fn.sign_define(
--- 	"LspDiagnosticsSignHint",
--- 	{ texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint" }
--- )
--- vim.fn.sign_define(
--- 	"LspDiagnosticsSignInformation",
--- 	{ texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation" }
--- )
-
-vim.fn.sign_define(
-	"LspDiagnosticsSignError",
-	{ texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError" }
-)
-vim.fn.sign_define(
-	"LspDiagnosticsSignWarning",
-	{ texthl = "LspDiagnosticsSignWarning", text = "", numhl = "LspDiagnosticsSignWarning" }
-)
-vim.fn.sign_define(
-	"LspDiagnosticsSignHint",
-	{ texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint" }
-)
-vim.fn.sign_define(
-	"LspDiagnosticsSignInformation",
-	{ texthl = "LspDiagnosticsSignInformation", text = "", numhl = "LspDiagnosticsSignInformation" }
-)
-
-vim.fn.sign_define("LightBulbSign", { text = "" })
-
-LightBulbFunc = function()
-	require("nvim-lightbulb").update_lightbulb({
-		-- Gigantic configuration
-		sign = {
-			enabled = true,
-			-- Priority of the gutter sign
-			priority = 10,
-		},
-	})
-end
-
-vim.cmd([[autocmd CursorHold,CursorHoldI * lua LightBulbFunc()]])

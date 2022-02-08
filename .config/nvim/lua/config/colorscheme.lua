@@ -9,8 +9,35 @@ local dark_sidebars = {
 	"GV",
 }
 
--- vim.g.onedark_style = "darker"
--- -- vim.g.onedark_style = "cool"
+-- Icons
+-- require("circles").setup({
+-- 	icons = {
+-- 		empty = "",
+-- 		filled = "",
+-- 		lsp_prefix = "",
+-- 	},
+-- 	lsp = false,
+-- })
+
+-- require("nvim-web-devicons").setup({
+-- your personnal icons can go here (to override)
+-- you can specify color or cterm_color instead of specifying both of them
+-- DevIcon will be appended to `name`
+-- override = {
+-- 	zsh = {
+-- 		icon = "",
+-- 		color = "#428850",
+-- 		cterm_color = "65",
+-- 		name = "Zsh",
+-- 	},
+-- },
+-- globally enable default icons (default to false)
+-- will get overriden by `get_icons` option
+-- 	default = true,
+-- })
+
+-- -- vim.g.onedark_style = "darker"
+-- vim.g.onedark_style = "cool"
 -- -- vim.g.onedark_style = "deep"
 -- -- vim.g.onedark_style = "warm"
 -- -- vim.g.onedark_style = "warmer"
@@ -26,34 +53,61 @@ local dark_sidebars = {
 -- vim.g.tokyonight_style = "night" -- storm, night or day
 -- vim.api.nvim_command("colorscheme tokyonight")
 
+-- black = '#22272e',
+-- bright_black = '#636e7b',
+-- white = '#909dab',
+-- bright_white = '#cdd9e5',
+-- red = '#ff938a',
+-- bright_red = '#ff938a',
+-- green = '#6bc46d',
+-- bright_green = '#6bc46d',
+-- yellow = '#c69026',
+-- bright_yellow = '#daaa3f',
+-- blue = '#6cb6ff',
+-- bright_blue = '#6cb6ff',
+-- magenta = '#b083f0',
+-- bright_magenta = '#dcbdfb',
+-- cyan = '#56d4dd',
+-- bright_cyan = '#56d4dd',
+
 require("github-theme").setup({
 	theme_style = "dimmed", -- dark, dark_default, dimmed, light, light_default
 	transparent = false,
-
-	-- add a thin border to status lines
+	--
+	-- add a thin border to status lines (deprecated?)
 	hide_inactive_statusline = true,
-
+	--
 	comment_style = "NONE",
 	keyword_style = "bold",
 	function_style = "NONE",
 	variable_style = "NONE",
 	msg_area_style = "NONE",
-
+	--
 	dark_float = true,
 	dark_sidebar = true,
 	sidebars = dark_sidebars,
-
-	-- Change the "hint" color to the "orange" color, and make the "error" color bright red
+	--
 	colors = {
+		error = "bright_red",
 		warning = "yellow",
 		info = "blue",
-		hint = "orange",
-		error = "red",
-		pmenu = {
-			-- select = "#044289",
-			select = "#264466",
-		},
+		hint = "magenta",
 	},
+	overrides = function(c)
+		return {
+			DiagnosticUnderlineHint = { link = "LspDiagnosticsUnderlineHint" },
+		}
+	end,
+	-- colors = {
+	-- 	warning = "yellow",
+	-- 	info = "blue",
+	-- 	hint = "orange",
+	-- 	error = "red",
+	-- 	pmenu = {
+	-- 		-- select = "#044289",
+	-- 		select = "#264466",
+	-- 	},
+	-- },
 })
 
 -- vim.g.gruvbox_flat_style = "hard" -- comment out | dark | hard
@@ -90,7 +144,7 @@ require("github-theme").setup({
 -- require("material").setup({
 -- 	contrast = true, -- Enable contrast for sidebars, floating windows and popup menus like Nvim-Tree
 -- 	borders = true, -- Enable borders between verticaly split windows
--- 	popup_menu = "dark", -- Popup menu style ( can be: 'dark', 'light', 'colorful' or 'stealth' )
+-- 	popup_menu = "colorful", -- Popup menu style ( can be: 'dark', 'light', 'colorful' or 'stealth' )
 -- 	italics = {
 -- 		comments = false, -- Enable italic comments
 -- 		keywords = false, -- Enable italic keywords

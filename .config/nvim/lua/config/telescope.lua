@@ -19,18 +19,34 @@ require("telescope").setup({
 		},
 	},
 	pickers = {
+		-- lsp_references = {
+		-- 	-- layout_strategy = "vertical",
+		-- 	theme = "cursor",
+		-- 	layout_config = {
+		-- 		width = 0.8,
+		-- 	},
+		-- },
 		lsp_references = {
-			-- layout_strategy = "vertical",
-			theme = "cursor",
+			sorting_strategy = "descending",
+			layout_strategy = "bottom_pane",
 			layout_config = {
 				width = 0.8,
 			},
 		},
 		find_files = {
-			theme = "dropdown",
+			-- theme = "dropdown",
 			sorting_strategy = "descending",
+			layout_strategy = "bottom_pane",
 			layout_config = {
-				width = 0.4,
+				width = 0.8,
+			},
+		},
+		live_grep = {
+			-- theme = "dropdown",
+			sorting_strategy = "descending",
+			layout_strategy = "bottom_pane",
+			layout_config = {
+				width = 0.8,
 			},
 		},
 	},

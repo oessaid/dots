@@ -41,7 +41,7 @@ M.load_options = function()
 		ignorecase = false, -- ignore case in search patterns
 		pumheight = 10, -- pop up menu height
 		showmode = false, -- we don't need to see things like -- INSERT -- anymore
-		showtabline = 1, -- always show tabs
+		showtabline = 1, -- only show tabs if there's more than one
 		smartcase = true, -- smart case
 		smartindent = true, -- make indenting smarter again
 		splitbelow = true, -- force all horizontal splits to go below current window
@@ -67,6 +67,7 @@ M.load_options = function()
 		spelllang = "en",
 		scrolloff = 8, -- is one of my fav
 		sidescrolloff = 8,
+		inccommand = "nosplit",
 	}
 
 	---  SETTINGS  ---

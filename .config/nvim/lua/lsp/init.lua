@@ -86,6 +86,10 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 	},
 }
 
+-- Code Action Menu
+vim.g.code_action_menu_show_details = true
+vim.g.code_action_menu_show_diff = true
+
 -- Rust-tools options (wrapper around rust_analyzer for LSP)
 require("rust-tools").setup({
 	tools = { -- rust-tools options
@@ -171,12 +175,29 @@ require("lspconfig").sumneko_lua.setup({
 	},
 })
 
+-- python (pyright)
+require("lspconfig").pyright.setup({
+	cmd = { "/home/omar/.local/share/nvim/lsp_servers/python/node_modules/.bin/pyright-langserver", "--stdio" },
+	filetypes = { "python" },
+	settings = {
+		python = {
+			analysis = {
+				autoSearchPaths = true,
+				diagnosticMode = "workspace",
+				useLibraryCodeForTypes = true,
+			},
+		},
+	},
+	single_file_support = true,
+})
+
 -- C#
 local pid = vim.fn.getpid()
 -- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
 -- local omnisharp_bin = "/home/omar/.local/share/nvim/lspinstall/csharp/omnisharp/run"
 -- local omnisharp_bin = "/home/omar/Software/omnisharp/omnisharp-linux-x64/run"
-local omnisharp_bin = "/home/omar/Software/omnisharp/omnisharp-mono/OmniSharp.exe"
+-- local omnisharp_bin = "/home/omar/software/omnisharp/omnisharp-mono/OmniSharp.exe"
+local omnisharp_bin = "/home/omar/software/omnisharp-roslyn/artifacts/publish/OmniSharp.Stdio.Driver/mono/OmniSharp.exe"
 -- on Windows
 -- local omnisharp_bin = "/path/to/omnisharp/OmniSharp.exe"
 require("lspconfig").omnisharp.setup({
@@ -259,7 +280,8 @@ local pgformatter = require("null-ls.helpers").make_builtin({
 })
 
 -- null-ls (formatting)
-require("null-ls").config({
+require("null-ls").setup({
+	on_attach = M.common_on_attach,
 	sources = {
 		pgformatter,
 		-- require("null-ls").builtins.formatting.clang_format, -- not required because LSP handles it
@@ -285,9 +307,6 @@ require("null-ls").config({
 			},
 		}),
 	},
-})
-require("lspconfig")["null-ls"].setup({
-	on_attach = M.common_on_attach,
 })
 
 return M

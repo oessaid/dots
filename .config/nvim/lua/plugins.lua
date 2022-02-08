@@ -18,14 +18,29 @@ return require("packer").startup({
 
 		-- Utils
 		use("norcalli/nvim-colorizer.lua")
+		use("lukas-reineke/indent-blankline.nvim")
 		-- use("tpope/vim-surround")
 
 		-- Status line, tabline
 		use({
-			"shadmansaleh/lualine.nvim",
+			"nvim-lualine/lualine.nvim",
 			requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		})
+		use({
+			"SmiteshP/nvim-gps",
+			requires = "nvim-treesitter/nvim-treesitter",
+		})
+		use({
+			"kdheepak/tabline.nvim",
+			requires = { { "hoob3rt/lualine.nvim", opt = true }, { "kyazdani42/nvim-web-devicons", opt = true } },
+		})
 
+		-- Icons
+		use("kyazdani42/nvim-web-devicons")
+		use({
+			"projekt0n/circles.nvim",
+			requires = { { "kyazdani42/nvim-web-devicons" }, { "kyazdani42/nvim-tree.lua", opt = true } },
+		})
 		-- Colorscheme
 		-- use("folke/tokyonight.nvm")
 		use({
@@ -36,6 +51,10 @@ return require("packer").startup({
 		use("navarasu/onedark.nvim")
 		-- use("CantoroMC/ayu-nvim")
 		-- use("eddyekofo94/gruvbox-flat.nvim")
+		use({
+			"catppuccin/nvim",
+			as = "catppuccin",
+		})
 
 		-- Fuzzy finder
 		use({
@@ -60,8 +79,12 @@ return require("packer").startup({
 		})
 		use("emilienlemaire/clang-tidy.nvim")
 
-		-- use({ "weilbith/nvim-code-action-menu" })
-		use({ "~/Software/nvim-code-action-menu", cmd = "CodeActionMenu" })
+		-- switch back to main repo once this PR is merged
+		-- https://github.com/weilbith/nvim-code-action-menu/pull/34
+		use({
+			"weilbith/nvim-code-action-menu",
+			cmd = "CodeActionMenu",
+		})
 		use({ "kosayoda/nvim-lightbulb" })
 
 		use({

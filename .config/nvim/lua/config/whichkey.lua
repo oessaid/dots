@@ -81,12 +81,16 @@ wk.register({
 
 	t = { ":ToggleTerm<cr>", "Terminal" },
 
-	["<space>"] = { "<cmd>lua vim.lsp.buf.definition()<CR>", "LSP: Definition" },
-	["?"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "LSP: Hover" },
-	["*"] = {
-		"<cmd>lua require('telescope.builtin').lsp_references()<CR>",
-		"LSP: References",
+	["<space>"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "LSP: Hover" },
+	-- ["<space>"] = {
+	-- 	"<cmd>lua require('telescope.builtin').lsp_definitions(require('telescope.themes').get_cursor({}))<CR>",
+	-- 	"LSP: Definitions",
+	-- },
+	["?"] = {
+		"<cmd>lua vim.diagnostic.open_float(nil, {focusable=false, source='always'})<cr>",
+		"Diagnostics (Line)",
 	},
+
 	-- r = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
 	["/"] = {
 		"<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find({layout_strategy='bottom_pane'})<cr>",
@@ -112,23 +116,38 @@ wk.register({
 
 	s = {
 		name = "LSP",
-		a = {
-			"<cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor({}))<CR>",
-			"Actions",
-		},
 		s = { ":SymbolsOutline<CR>", "Symbols tree" },
-		h = { ":ClangdSwitchSourceHeader<CR>", "Toggle Source/Header (C++)" },
-		i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Implementation" },
-		r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-		["?"] = {
-			"<cmd>lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})<cr>",
-			"Diagnostics (Line)",
+		-- s = { "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", "Symbols (Buffer)" },
+		a = {
+			":CodeActionMenu<CR>",
+			"LSP: Actions",
 		},
-		d = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "Diagnostics (Buffer)" },
+		-- a = {
+		-- 	"<cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_cursor({}))<CR>",
+		-- 	"Actions",
+		-- },
+		d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "LSP: Definition" },
+		i = {
+			"<cmd>lua require('telescope.builtin').lsp_implementations(require('telescope.themes').get_cursor({}))<cr>",
+			"LSP: Implementations",
+		},
+		-- i = { "<cmd>lua vim.lsp.buf.implementation()<cr>", "Implementation" },
+		t = {
+			"<cmd>lua require('telescope.builtin').lsp_type_definitions(require('telescope.themes').get_cursor({}))<CR>",
+			"LSP: Type Definitions",
+		},
+		r = {
+			"<cmd>lua require('telescope.builtin').lsp_references()<CR>",
+			"LSP: References",
+		},
+		n = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+		["?"] = { "<cmd>TroubleToggle document_diagnostics<cr>", "Diagnostics (Buffer)" },
 		-- from Buffer diagnostics, `m` switches to Workspace diagnostics mode
-		w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "Diagnostics (Workspace)" },
-		j = { "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>", "Next Diagnostic" },
-		k = { "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
+		-- w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Diagnostics (Workspace)" },
+		j = { "<cmd>lua vim.diagnostic.goto_next()<cr>", "Next Diagnostic" },
+		k = { "<cmd>lua vim.diagnostic.goto_prev()<cr>", "Previous Diagnostic" },
+
+		c = { ":ClangdSwitchSourceHeader<CR>", "Toggle Source/Header (C++)" },
 		-- a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Actions" },
 		-- g = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signature Help" },
 		-- r = {
@@ -171,7 +190,7 @@ wk.register({
 		h = {
 			name = "Hunks",
 			p = { "<cmd>lua require'gitsigns'.preview_hunk()<CR>", "Preview" },
-			b = { "<cmd>lua require'gitsigns'.blame_line(true)<CR>", "Blame" },
+			b = { "<cmd>lua require'gitsigns'.blame_line{full=true}<CR>", "Blame" },
 			s = { "<cmd>lua require'gitsigns'.stage_hunk()<CR>", "Stage" },
 			r = { "<cmd>lua require'gitsigns'.reset_hunk()<CR>", "Reset" },
 			u = { "<cmd>lua require'gitsigns'.undo_stage_hunk()<CR>", "Stage (Undo)" },

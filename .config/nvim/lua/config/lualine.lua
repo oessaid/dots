@@ -1,3 +1,31 @@
+-- GPS component
+local gps = require("nvim-gps")
+gps.setup({
+	disable_icons = false,
+	depth = 0,
+	depth_limit_indicator = "..",
+})
+
+-- require("tabline").setup({
+-- 	-- Defaults configuration options
+-- 	enable = true,
+-- 	options = {
+-- 		-- If lualine is installed tabline will use separators configured in lualine by default.
+-- 		-- These options can be used to override those settings.
+-- 		component_separators = { "|", "|" },
+-- 		section_separators = { "", "" },
+-- 		-- section_separators = { "", "" },
+-- 		-- component_separators = { "", "" },
+-- 		-- max_bufferline_percent = 66, -- set to nil by default, and it uses vim.o.columns * 2/3
+-- 		-- show_tabs_always = false, -- this shows tabs only when there are more than one tab or if the first tab is named
+-- 		show_devicons = true, -- this shows devicons in buffer section
+-- 		show_bufnr = true, -- this appends [bufnr] to buffer section,
+-- 		show_filename_only = true, -- shows base filename only instead of relative path in filename
+-- 		modified_icon = "+ ", -- change the default modified icon
+-- 		modified_italic = true, -- set to true by default; this determines whether the filename turns italic if modified
+-- 	},
+-- })
+
 -- used for diagnostic/diff colors
 -- local colors = require("nightfox.colors").load()
 -- Gruvbox Flat colors (Hard)
@@ -45,7 +73,9 @@ local conditions = {
 
 local opts = {
 	icons_enabled = true,
-	theme = "github",
+	-- theme = "catppuccin",
+	-- theme = "auto",
+	theme = "auto",
 	-- theme = "gruvbox-flat",
 	-- theme = "material-nvim",
 	-- component_separators = "|",
@@ -113,29 +143,12 @@ local active_sections = {
 			},
 			cond = conditions.buffer_not_empty,
 		},
-		{
-			"branch",
-			icon = "",
-			cond = conditions.hide_in_width,
-			color = {
-				fg = colors.comment,
-			},
-		},
-		{
-			"diff",
-			symbols = { added = " ", modified = "柳", removed = " " },
-			diff_color = {
-				added = { fg = colors.aqua },
-				modified = { fg = colors.orange },
-				removed = { fg = colors.red },
-			},
-			cond = conditions.hide_in_width,
-		},
+		-- { gps.get_location, cond = gps.is_available },
 	},
 	lualine_x = {
 		{
 			"diagnostics",
-			sources = { "nvim_lsp" },
+			sources = { "nvim_diagnostic" },
 			symbols = { error = " ", warn = " ", info = " " },
 			diagnostics_color = {
 				color_error = { fg = colors.red },
@@ -159,11 +172,29 @@ local active_sections = {
 				end
 				return msg
 			end,
-			icon = " ",
+			-- icon = " ",
 			cond = conditions.hide_in_width,
 			color = {
 				fg = colors.aqua,
 			},
+		},
+		{
+			"branch",
+			icon = "",
+			cond = conditions.hide_in_width,
+			color = {
+				fg = colors.comment,
+			},
+		},
+		{
+			"diff",
+			symbols = { added = " ", modified = "柳", removed = " " },
+			diff_color = {
+				added = { fg = colors.aqua },
+				modified = { fg = colors.orange },
+				removed = { fg = colors.red },
+			},
+			cond = conditions.hide_in_width,
 		},
 		{ "filetype" },
 		-- { "filesize", color = { fg = colors.comment } },
@@ -187,10 +218,95 @@ local inactive_buffer_sections = {
 	lualine_z = {},
 }
 
+-- require("lualine").setup({
+-- 	options = opts,
+-- 	sections = active_sections,
+-- 	inactive_sections = inactive_buffer_sections,
+-- 	tabline = {},
+-- 	extensions = { "toggleterm", "nvim-tree", "fzf", "fugitive" },
+-- })
+
 require("lualine").setup({
-	options = opts,
-	sections = active_sections,
-	inactive_sections = inactive_buffer_sections,
-	tabline = {},
+	options = {
+		icons_enabled = true,
+		component_separators = "|",
+		-- component_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
+		-- section_separators = { left = "", right = "" },
+		theme = "github", -- or "auto"
+	},
+	sections = {
+		lualine_a = { "mode" },
+		lualine_b = {
+			{ "filename", file_status = true, path = 1 },
+		},
+		lualine_c = {
+			{
+				"diagnostics",
+				sources = { "nvim_diagnostic" },
+				symbols = { error = " ", warn = " ", info = " ", hint = " " },
+			},
+		},
+		lualine_x = {
+			"filetype",
+		},
+		lualine_y = {
+			{ "progress", padding = { right = 1, left = 0 } },
+			{ "location", padding = { right = 1, left = 0 } },
+		},
+		lualine_z = {},
+	},
+	inactive_sections = {
+		lualine_a = {},
+		lualine_b = {},
+		lualine_c = { { "filename", path = 1 } },
+		lualine_x = { "location" },
+		lualine_y = {},
+		lualine_z = {},
+	},
+	tabline = {
+		lualine_a = {},
+		lualine_b = {
+			{ "tabs", mode = 0, separator = { right = "", left = "" }, padding = 1 },
+		},
+		lualine_c = {
+			-- { require("tabline").tabline_buffers },
+			-- -- { gps.get_location, cond = gps.is_available },
+		},
+		lualine_x = {
+			-- { require("tabline").tabline_tabs },
+			{ "filename", file_status = true, path = 2 },
+			"encoding",
+			{ "fileformat", icons_enabled = false },
+			{
+				"diff",
+				symbols = { added = " ", modified = "柳", removed = " " },
+			},
+		},
+		lualine_y = {
+			{ "branch" },
+		},
+		lualine_z = {
+			{
+				function()
+					local msg = "None"
+					local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+					local clients = vim.lsp.get_active_clients()
+					if next(clients) == nil then
+						return msg
+					end
+					for _, client in ipairs(clients) do
+						local filetypes = client.config.filetypes
+						if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+							return client.name
+						end
+					end
+					return msg
+				end,
+				-- icon = " ",
+				cond = conditions.hide_in_width,
+			},
+		},
+	},
 	extensions = { "toggleterm", "nvim-tree", "fzf", "fugitive" },
 })

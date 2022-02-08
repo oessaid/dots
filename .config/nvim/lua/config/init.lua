@@ -1,4 +1,5 @@
 -- require("config.evil_lualine")
+require("config.indent")
 require("config.lualine")
 require("config.colorscheme")
 require("config.completion")

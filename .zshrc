@@ -76,7 +76,7 @@ export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -U -l -g ""'
 export FZF_DEFAULT_OPTS='--bind='F2:toggle-preview''
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias luamake=/home/omar/Software/lua-language-server/3rd/luamake/luamake
+alias luamake=/home/omar/software/lua-language-server/3rd/luamake/luamake
 
 # # additional completions
 # zmodload zsh/complist

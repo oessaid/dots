@@ -1,5 +1,4 @@
 vim.g.nvim_tree_disable_window_picker = 1 -- 0 by default, will disable the window picker.
-vim.g.nvim_tree_ignore = { ".git", "node_modules", ".cache", "*.meta" }
 
 -- require("nvim-tree.view").View.winopts.relativenumber = true
 -- require("nvim-tree.view").View.winopts.number = true
@@ -18,23 +17,25 @@ require("nvim-tree").setup({
 	-- opens the tree when changing/opening a new tab if the tree wasn't previously opened
 	open_on_tab = false,
 	-- hijack the cursor in the tree to put it at the start of the filename
-	hijack_cursor = false,
+	hijack_cursor = true,
 	-- updates the root directory of the tree on `DirChanged` (when your run `:cd` usually)
 	update_cwd = false,
 	-- show lsp diagnostics in the signcolumn
 	diagnostics = {
 		enable = false,
 		icons = {
-			hint = "",
-			info = "",
-			warning = "",
-			error = "",
+			hint = " ",
+			info = " ",
+			warning = " ",
+			error = " ",
 		},
 	},
+
+	filters = { custom = { ".git", "node_modules", ".cache", "*.meta" } },
 	-- update the focused file on `BufEnter`, un-collapses the folders recursively until it finds the file
 	update_focused_file = {
 		-- enables the feature
-		enable = false,
+		enable = true,
 		-- update the root directory of the tree to the one of the folder containing the file if the file is not under the current root directory
 		-- only relevant when `update_focused_file.enable` is true
 		update_cwd = false,
@@ -48,6 +49,12 @@ require("nvim-tree").setup({
 		cmd = nil,
 		-- the command arguments as a list
 		args = {},
+	},
+
+	git = {
+		enable = true,
+		ignore = false,
+		timeout = 500,
 	},
 
 	view = {

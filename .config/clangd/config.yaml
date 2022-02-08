@@ -14,5 +14,22 @@ Diagnostics:
             - google-*
             - boost-*
             - llvm-*
+        Remove:
+            # Annoying to suggest it everywhere
+            - modernize-use-trailing-return-type
 CompileFlags: # Tweak the parse settings
-    Add: [-xc++, -Wall] # treat all files as C++, enable more warnings
+    Add: [
+            # treat all files as C++
+            -xc++,
+            # use C++20
+            -std=c++20,
+            -Wall,
+            -Wextra,
+            -Wpedantic,
+            -Weverything,
+            # disable warnings about compatibility with C++98
+            -Wno-c++98-compat,
+            # circumvent this SDL2 bug on Ubuntu: 
+            # https://bugs.launchpad.net/ubuntu/+source/libsdl2-ttf/+bug/1872023
+            -I/usr/include/SDL2,
+        ]
