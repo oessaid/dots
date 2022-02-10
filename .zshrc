@@ -54,8 +54,9 @@ alias zshconfig="nvim ~/.zshrc"
 alias vim="nvim"
 alias vi="nvim"
 alias open='xdg-open'
-alias ls="exa -a --color=never --git --group-directories-first --classify --icons"
-alias ll="exa -a --color=never --octal-permissions --git --group-directories-first --classify --icons --long"
+alias ls="exa --color=always --git --group-directories-first --classify --icons"
+alias lsa="exa -a --color=always --git --group-directories-first --classify --icons"
+alias ll="exa --color=always --octal-permissions --git --group-directories-first --classify --icons --long"
 alias ee="ranger"
 # Tree view: use as `lt 3 <folder>` for a 3 level tree of <folder>
 alias lt="exa -a --color=never --git --tree --octal-permissions --long --header --group-directories-first --icons"

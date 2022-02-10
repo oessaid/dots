@@ -271,7 +271,7 @@ require("lualine").setup({
 		},
 		lualine_c = {
 			-- { require("tabline").tabline_buffers },
-			-- -- { gps.get_location, cond = gps.is_available },
+			{ gps.get_location, cond = gps.is_available },
 		},
 		lualine_x = {
 			-- { require("tabline").tabline_tabs },

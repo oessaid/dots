@@ -1,0 +1,128 @@
+""" Map leader to space ---------------------
+let mapleader=" "
+inoremap jk <Esc>
+inoremap kj <Esc>
+
+set timeoutlen=300
+
+""" Plugins  --------------------------------
+" set surround
+" set multiple-cursors
+" set commentary
+" set argtextobj
+" set easymotion
+" set textobj-entire
+" set ReplaceWithRegister
+set which-key
+set highlightedyank
+set commentary
+
+""" Plugin settings -------------------------
+let g:argtextobj_pairs="[:],(:),<:>"
+
+""" Common settings -------------------------
+set showmode
+set incsearch
+set nu
+set relativenumber
+set number
+" Show a few lines of context around the cursor. Note that this makes the
+" text scroll if you mouse-click near the start or end of the window.
+set scrolloff=5
+
+""" Idea specific settings ------------------
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
+""" Mappings --------------------------------
+" map <leader>f <Plug>(easymotion-s)
+" map <leader>e <Plug>(easymotion-f)
+
+
+" Quick documentation
+map <leader><leader> <Action>(QuickJavaDoc)
+
+" Project tree
+map <leader>e <Action>(ActivateProjectToolWindow)
+
+" Terminal
+map <leader>t <Action>(ActivateTerminalToolWindow)
+
+" Diagnostic for line
+map <leader>? <Action>(ShowErrorDescription)
+
+" Search in file
+map <leader>/ <Action>(Find)
+
+" Search for file
+map <leader>fp <Action>(SearchEverywhere)
+map <leader>ff <Action>(GotoFile)
+map <leader>fw <Action>(FindInPath)
+
+" Cursor nav bar
+map <leader>fn <Action>(ShowNavBar)
+
+" LSP
+map <leader>ss <Action>(ActivateStructureToolWindow)
+
+map <leader>sa <Action>(ShowIntentionActions)
+
+map <leader>sd <Action>(GotoDeclaration)
+map <leader>si <Action>(QuickImplementations)
+map <leader>st <Action>(GotoTypeDeclaration)
+map <leader>sr <Action>(FindUsages)
+
+map <leader>sn <Action>(RenameElement)
+
+map <leader>sp <Action>(ActivateProblemsViewToolWindow)
+map <leader>sj <Action>(GotoNextError)
+map <leader>sk <Action>(GotoPreviousError)
+
+" Better navigation
+map <C-O> <Action>(Back)
+map <C-I> <Action>(Next)
+
+" Git
+map <leader>gg <Action>(ActivateCommitToolWindow)
+map <leader>gl <Action>(ActivateVersionControlToolWindow)
+map <leader>gd <Action>(Compare.SameVersion)
+map <leader>gh <Action>(Vcs.ShowTabbedFileHistory)
+
+" Splits & Navigation
+map <leader>- <Action>(SplitHorizontally)
+map <leader>\ <Action>(SplitVertically)
+map gt <Action>(NextTab)
+map <S-g>t <Action>(PreviousTab)
+
+" nmap st :tab split
+nmap <leader>\\ <C-W>v
+nmap <leader>- <C-W>s
+nmap <leader>= <C-W>=
+
+nmap <leader><S-j> <C-W><S-J>
+nmap <leader><S-k> <C-W><S-K>
+nmap <leader><S-l> <C-W><S-L>
+nmap <leader><S-h> <C-W><S-H>
+nmap <leader>j <C-W><C-J>
+nmap <leader>k <C-W><C-K>
+nmap <leader>l <C-W><C-L>
+nmap <leader>h <C-W><C-H>
+nmap <C-j> <C-d>
+nmap <C-k> <C-u>
+
+" map <leader>s? <Action>(ShowErrorDescription)
+" map <leader><leader> <Action>(GoToDeclaration)
+" 
+" map <leader>d <Action>(Debug)
+" map <leader>r <Action>(RenameElement)
+" map <leader>c <Action>(Stop)
+" map <leader>z <Action>(ToggleDistractionFreeMode)
+" 
+" map <leader>s <Action>(SelectInProjectView)
+" map <leader>a <Action>(Annotate)
+" map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+" map <S-Space> <Action>(GotoNextError)
+" 
+" map <leader>b <Action>(ToggleLineBreakpoint)
+" map <leader>o <Action>(FileStructurePopup)
