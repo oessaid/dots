@@ -1,0 +1,75 @@
+#!/usr/bin/env zsh
+
+# focus recent window (;)
+hyper - 0x29 : yabai -m window --focus recent
+
+# Seamless navigation between displays,
+# based on: https://github.com/koekeishiya/yabai/issues/104#issuecomment-511237696
+# We try successively:
+# - focus next window on focused space
+# - focus first window on visible space on next display
+# - focus first window on visible space on first display
+# - focus next display
+# - focus first display
+
+# go east
+hyper - l : yabai -m window --focus east \
+         || yabai -m window --focus "$( \
+		          (yabai -m query --spaces --display next || yabai -m query --spaces --display first) \
+              | jq -re '.[] | select(."is-visible" == true)."first-window"')" \
+        || yabai -m display --focus next \
+        || yabai -m display --focus first
+
+# go west
+hyper - h : yabai -m window --focus west \
+         || yabai -m window --focus "$( \
+              (yabai -m query --spaces --display prev || yabai -m query --spaces --display last) \
+              | jq -re '.[] | select(."is-visible" == true)."last-window"')" \
+        || yabai -m display --focus prev \
+        || yabai -m display --focus last
+
+# go south
+hyper - j : yabai -m window --focus south \
+         || yabai -m window --focus "$( \
+              (yabai -m query --spaces --display next || yabai -m query --spaces --display first) \
+              | jq -re '.[] | select(."is-visible" == true)."first-window"')" \
+         || yabai -m display --focus next \
+         || yabai -m display --focus first
+
+# go north
+hyper - k : yabai -m window --focus north \
+         || yabai -m window --focus "$( \
+              (yabai -m query --spaces --display prev || yabai -m query --spaces --display last) \
+              | jq -re '.[] | select(."is-visible" == true)."last-window"')" \
+         || yabai -m display --focus prev \
+         || yabai -m display --focus last
+
+# swap managed window
+ctrl + alt - h : yabai -m window --swap west
+ctrl + alt - j : yabai -m window --swap south
+ctrl + alt - k : yabai -m window --swap north
+ctrl + alt - l : yabai -m window --swap east
+
+# increase window size
+ctrl + alt - left : yabai -m window --resize left:-20:0
+ctrl + alt - down : yabai -m window --resize top:0:20
+
+# decrease window size
+ctrl + alt - right : yabai -m window --resize left:20:0
+ctrl + alt - up : yabai -m window --resize top:0:-20
+
+# balance size of windows (0x18 is the equal sign, use skhd -o to check)
+hyper - 0x18 : yabai -m space --balance
+
+# send window to next/prev space
+ctrl + alt - i : yabai -m window --space next
+ctrl + alt - u : yabai -m window --space prev
+
+# close window
+hyper - w : yabai -m window --close
+
+# toggle window zoom
+hyper - z : yabai -m window --toggle zoom-fullscreen
+
+# toggle window split type
+hyper - s : yabai -m window --toggle split

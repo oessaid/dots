@@ -1,0 +1,62 @@
+[user]
+	name = Omar Essaid
+	email = omar.essaid@helsing.ai
+	username = omar.essaid
+
+[commit]
+	gpgsign = false
+
+[gpg]
+	program = /usr/bin/gpg
+
+[alias]
+	lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+	lg3 = log --graph --abbrev-commit --decorate=no --date=format:'%Y-%m-%d %H:%I:%S' --format=format:'%C(03)%>|(26)%h%C(reset)  %C(04)%ad%C(reset)  %C(green)%<(16,trunc)%an%C(reset)  %C(bold 1)%d%C(reset) %C(bold 0)%>|(1)%s%C(reset)' --all
+	lg4 = log --graph --abbrev-commit --decorate --date=format:'%Y-%m-%d %H:%I:%S' --format=format:'%C(bold blue)%h%C(reset) - %C(white)%s%C(reset) %C(dim white) - %C(dim white)%ar%C(reset) - %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	lg = !"git lg4"
+	st = "status -s"
+	co = checkout
+  fa = fetch --all --prune
+  pa = pull --all
+  ba = branch -v --all
+  info = !"onefetch --show-logo=never"
+
+[core]
+  pager = delta
+	excludesfile = /home/oessaid/.gitignore_global
+  editor = nvim
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    syntax-theme = gruvbox-dark
+    side-by-side = true
+    line-numbers = true
+    navigate = true
+    light = false
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
+[pull]
+	ff = only
+
+[push]
+  autoSetupRemote = true
+
+[init]
+	defaultBranch = main
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[submodule]
+	recurse = true
