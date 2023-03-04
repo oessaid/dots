@@ -4,7 +4,7 @@
 
 `Neovim` inside `tmux` inside `kitty` inside `yabai` on MacOS.
 
-<img width="2184" alt="image" src="https://user-images.githubusercontent.com/35626945/222924284-59bb423d-8d39-4f42-9f37-3de1f4964505.png">
+<img width="2184" alt="image" src="https://user-images.githubusercontent.com/35626945/222927228-ef143333-28a9-4343-aa56-1c1c9ecd70bf.png">
 
 ## Installing in a new system
 
