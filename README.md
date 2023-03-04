@@ -1,5 +1,11 @@
 # Dotfiles configuration
 
+## Showcase
+
+`Neovim` inside `tmux` inside `yabai` on MacOS.
+
+<img width="3008" alt="image" src="https://user-images.githubusercontent.com/35626945/222902467-8ee7e5c8-9b40-4b8f-b9a6-669b7b7a3145.png">
+
 ## Installing in a new system
 
 Clone the repo into a bare repository inside `$HOME`:
