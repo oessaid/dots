@@ -4,7 +4,7 @@ $directory\
 [](fg:blue bg:8)\
 $git_branch\
 $git_status\
-[](fg:8 bg:16)\
+[](fg:8)\
 \n$character"""
 
 right_format = """

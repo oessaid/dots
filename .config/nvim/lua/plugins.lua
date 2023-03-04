@@ -1,15 +1,15 @@
 return {
   -- colorscheme
   {
-    "ellisonleao/gruvbox.nvim",
+    "RRethy/nvim-base16",
     lazy = false,
-    priority = 1000,
+    priority = 1000
   },
-  { "RRethy/nvim-base16" },
 
   -- file explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
+    lazy = false,
     branch = "v2.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -33,21 +33,24 @@ return {
   { 'simrat39/symbols-outline.nvim' },
   {
     "SmiteshP/nvim-navic",
-    dependencies = "neovim/nvim-lspconfig"
+    dependencies = "neovim/nvim-lspconfig",
   },
 
   -- Autocompletion
-  { 'hrsh7th/nvim-cmp' },
-  { 'hrsh7th/cmp-nvim-lsp' },
-  { 'hrsh7th/cmp-buffer' },
-  { 'hrsh7th/cmp-path' },
-  { 'saadparwaiz1/cmp_luasnip' },
-  { 'hrsh7th/cmp-nvim-lua' },
-  { 'ray-x/lsp_signature.nvim' },
-
-  -- Snippets
-  { 'L3MON4D3/LuaSnip' },
-  { 'rafamadriz/friendly-snippets' },
+  {
+    'hrsh7th/nvim-cmp',
+    event = "InsertEnter",
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-nvim-lua',
+      'ray-x/lsp_signature.nvim',
+      'L3MON4D3/LuaSnip',
+      'rafamadriz/friendly-snippets'
+    }
+  },
 
   -- Treesitter
   {
@@ -77,9 +80,12 @@ return {
   -- Editing
   { "tpope/vim-commentary" },
   { "folke/neodev.nvim" },
+  {
+    'norcalli/nvim-colorizer.lua'
+  },
 
   -- Terminal
-  { "akinsho/toggleterm.nvim",                version = "*", config = true },
+  { "akinsho/toggleterm.nvim", version = "*", config = true },
 
   -- Status line
   {

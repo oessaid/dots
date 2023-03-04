@@ -32,11 +32,17 @@ require("lualine").setup({
       },
     },
     lualine_x = {
+      {
+        "diff",
+        symbols = { added = " ", modified = " ", removed = " " },
+      },
       "filetype",
     },
     lualine_y = {
       { "progress", padding = { right = 1, left = 0 } },
       { "location", padding = { right = 1, left = 0 } },
+      "encoding",
+      { "fileformat", icons_enabled = false },
     },
     lualine_z = {},
   },
@@ -57,13 +63,7 @@ require("lualine").setup({
       { require("nvim-navic").get_location, cond = require("nvim-navic").is_available },
     },
     lualine_x = {
-      { "filename",   file_status = true,   path = 3 },
-      "encoding",
-      { "fileformat", icons_enabled = false },
-      {
-        "diff",
-        symbols = { added = " ", modified = " ", removed = " " },
-      },
+      { "filename", file_status = true, path = 3 },
     },
     lualine_y = {
       { "branch" },

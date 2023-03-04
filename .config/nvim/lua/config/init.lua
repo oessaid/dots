@@ -8,3 +8,5 @@ require("config.telescope")
 require("config.terminal")
 require("config.git")
 require("config.status_line")
+
+require("colorizer").setup()
