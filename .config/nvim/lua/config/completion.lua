@@ -4,26 +4,27 @@ cmp.setup({
   completion = {
     completeopt = "menu,menuone,noinsert",
   },
+  window = {
+    completion = cmp.config.window.bordered({
+      scrollbar = false,
+      winhighlight = "Normal:NormalFloat,Search:None",
+      col_offset = -3,
+      side_padding = 0,
+    }),
+    documentation = cmp.config.window.bordered({
+      scrollbar = false,
+      winhighlight = "Normal:NormalFloat,Search:None"
+    }),
+  },
   formatting = {
+    fields = { "kind", "abbr", "menu" },
     format = function(entry, vim_item)
-      -- local icons = require("lsp.kind").icons
-      -- vim_item.kind = icons[vim_item.kind]
-      vim_item.menu = ({
-            nvim_lsp = "[LSP]",
-            emoji = "[Emoji]",
-            path = "[Path]",
-            calc = "[Calc]",
-            cmp_tabnine = "[Tabnine]",
-            vsnip = "[Snippet]",
-            luasnip = "[Snippet]",
-            buffer = "[Buffer]",
-          })[entry.source.name]
-      vim_item.dup = ({
-            buffer = 1,
-            path = 1,
-            nvim_lsp = 0,
-          })[entry.source.name] or 0
-      return vim_item
+      local kind = require("lspkind").cmp_format({ mode = "symbol", maxwidth = 50 })(entry, vim_item)
+      local strings = vim.split(kind.kind, "%s", { trimempty = true })
+      kind.kind = " " .. (strings[1] or "") .. " "
+      -- kind.menu = "    [" .. (strings[2] or "") .. "]"
+      kind.menu = ""
+      return kind
     end,
   },
   snippet = {
@@ -33,6 +34,7 @@ cmp.setup({
   },
   sources = {
     { name = "nvim_lsp" },
+    { name = "nvim_lsp_signature_help" },
     { name = "path" },
     { name = "luasnip" },
     { name = "nvim_lua" },

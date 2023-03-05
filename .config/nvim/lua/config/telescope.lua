@@ -7,18 +7,12 @@ require("telescope").setup({
       case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
     },
         ["ui-select"] = {
-      require("telescope.themes").get_cursor {
-        -- even more opts
-      }
+      require("telescope.themes").get_cursor {}
     }
   },
   pickers = {
     lsp_references = {
-      sorting_strategy = "descending",
-      layout_strategy = "bottom_pane",
-      layout_config = {
-        width = 0.8,
-      },
+      theme = "cursor"
     },
     find_files = {
       sorting_strategy = "descending",
@@ -50,7 +44,7 @@ require("telescope").setup({
     },
     file_ignore_patterns = { ".git/", ".meta" },
     winblend = 1,
-    border = {},
+    border = true,
     borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
     color_devicons = true,
     use_less = true,
@@ -58,12 +52,14 @@ require("telescope").setup({
     dynamic_preview_title = true,
     mappings = {
       i = {
+            ["<esc>"] = require("telescope.actions").close,
             ["<C-j>"] = require("telescope.actions").preview_scrolling_down,
             ["<C-k>"] = require("telescope.actions").preview_scrolling_up,
             ["<C-q>"] = require("telescope.actions").send_selected_to_qflist
         + require("telescope.actions").open_qflist,
       },
       n = {
+            ["<esc>"] = require("telescope.actions").close,
             ["<C-j>"] = require("telescope.actions").preview_scrolling_down,
             ["<C-k>"] = require("telescope.actions").preview_scrolling_up,
             ["<C-q>"] = require("telescope.actions").send_selected_to_qflist

@@ -12,12 +12,58 @@ local conditions = {
   end,
 }
 
+local gruvbox = {
+  black        = '#1d2021',
+  white        = '#d5c4a1',
+  red          = '#d65d0e',
+  green        = '#8ec07c',
+  blue         = '#83a598',
+  yellow       = '#fabd2f',
+  gray         = '#bdae93',
+  darkgray     = '#3c3836',
+  lightgray    = '#504945',
+  inactivegray = '#7c6f64',
+}
+
+local theme = {
+  normal = {
+    a = { bg = gruvbox.gray, fg = gruvbox.black, gui = 'bold' },
+    b = { bg = gruvbox.lightgray, fg = gruvbox.white },
+    c = { bg = gruvbox.darkgray, fg = gruvbox.gray }
+  },
+  insert = {
+    a = { bg = gruvbox.blue, fg = gruvbox.black, gui = 'bold' },
+    b = { bg = gruvbox.lightgray, fg = gruvbox.white },
+    c = { bg = gruvbox.lightgray, fg = gruvbox.white }
+  },
+  visual = {
+    a = { bg = gruvbox.yellow, fg = gruvbox.black, gui = 'bold' },
+    b = { bg = gruvbox.lightgray, fg = gruvbox.white },
+    c = { bg = gruvbox.inactivegray, fg = gruvbox.black }
+  },
+  replace = {
+    a = { bg = gruvbox.red, fg = gruvbox.black, gui = 'bold' },
+    b = { bg = gruvbox.lightgray, fg = gruvbox.white },
+    c = { bg = gruvbox.black, fg = gruvbox.white }
+  },
+  command = {
+    a = { bg = gruvbox.green, fg = gruvbox.black, gui = 'bold' },
+    b = { bg = gruvbox.lightgray, fg = gruvbox.white },
+    c = { bg = gruvbox.inactivegray, fg = gruvbox.black }
+  },
+  inactive = {
+    a = { bg = gruvbox.darkgray, fg = gruvbox.gray, gui = 'bold' },
+    b = { bg = gruvbox.darkgray, fg = gruvbox.gray },
+    c = { bg = gruvbox.darkgray, fg = gruvbox.gray }
+  }
+}
+
 require("lualine").setup({
   options = {
     icons_enabled = true,
     component_separators = "|",
     section_separators = { left = "", right = "" },
-    theme = "auto",
+    theme = theme,
   },
   sections = {
     lualine_a = { "mode" },
@@ -57,7 +103,7 @@ require("lualine").setup({
   tabline = {
     lualine_a = {},
     lualine_b = {
-      { "tabs", mode = 0, separator = { right = "", left = "" }, padding = 1 },
+      { "tabs", mode = 0, separator = nil, padding = 1 },
     },
     lualine_c = {
       { require("nvim-navic").get_location, cond = require("nvim-navic").is_available },

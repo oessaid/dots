@@ -8,5 +8,7 @@ require("config.telescope")
 require("config.terminal")
 require("config.git")
 require("config.status_line")
+require("config.neotree")
 
 require("colorizer").setup()
+require('nvim_comment').setup()

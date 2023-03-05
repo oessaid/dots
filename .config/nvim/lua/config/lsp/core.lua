@@ -12,6 +12,14 @@ require("mason-lspconfig").setup({
 
 local M = {}
 
+vim.lsp.handlers["textDocument/hover"] =
+    vim.lsp.with(
+      vim.lsp.handlers.hover,
+      {
+        border = "rounded"
+      }
+    )
+
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local navic = require("nvim-navic")
@@ -32,15 +40,6 @@ M.lsp_attach = function(client, bufnr)
       end,
     })
   end
-
-  -- Function signature
-  require("lsp_signature").on_attach({
-    bind = true,
-    hint_prefix = " ",
-    handler_opts = {
-      border = "none" -- double, rounded, single, shadow, none, or a table of borders
-    },
-  }, bufnr)
 
   -- Keymaps
   local function buf_set_keymap(...)
@@ -92,7 +91,5 @@ local function show_documentation()
 end
 
 vim.keymap.set("n", "<leader><leader>", show_documentation, { noremap = true, silent = true })
-
-require("fidget").setup {}
 
 return M

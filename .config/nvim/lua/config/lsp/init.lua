@@ -6,3 +6,5 @@ require("config.lsp.clangd")
 require("config.lsp.diagnostics")
 require("config.lsp.symbols")
 require("config.lsp.navigation")
+
+require("fidget").setup {}

@@ -46,6 +46,8 @@ zstyle ':fzf-tab:*' popup-min-size 50 8
 zstyle ':fzf-tab:*' popup-pad 30 0
 # lines occupied by fzf's prompt
 zstyle ':fzf-tab:*' fzf-pad 4
+# trigger for continuous completion
+zstyle ':fzf-tab:*' continuous-trigger '/'
 
 # zstyle ':autocomplete:*' fzf-completion yes
 # zstyle ':autocomplete:*' list-lines 10

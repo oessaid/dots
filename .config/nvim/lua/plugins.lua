@@ -46,9 +46,11 @@ return {
       'hrsh7th/cmp-path',
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-nvim-lua',
-      'ray-x/lsp_signature.nvim',
+      -- 'ray-x/lsp_signature.nvim',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
       'L3MON4D3/LuaSnip',
-      'rafamadriz/friendly-snippets'
+      'rafamadriz/friendly-snippets',
+      'onsails/lspkind.nvim'
     }
   },
 
@@ -78,7 +80,7 @@ return {
   { "junegunn/gv.vim" },
 
   -- Editing
-  { "tpope/vim-commentary" },
+  { "terrortylor/nvim-comment" },
   { "folke/neodev.nvim" },
   {
     'norcalli/nvim-colorizer.lua'
