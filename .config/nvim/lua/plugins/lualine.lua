@@ -27,7 +27,7 @@ return {
         blue         = '#83a598',
         yellow       = '#fabd2f',
         gray         = '#bdae93',
-        darkgray     = '#3c3836',
+        darkgray     = '#262727',
         lightgray    = '#504945',
         inactivegray = '#7c6f64',
       }
@@ -41,22 +41,22 @@ return {
         insert = {
           a = { bg = gruvbox.blue, fg = gruvbox.black, gui = 'bold' },
           b = { bg = gruvbox.lightgray, fg = gruvbox.white },
-          c = { bg = gruvbox.lightgray, fg = gruvbox.white }
+          c = { bg = gruvbox.darkgray, fg = gruvbox.gray }
         },
         visual = {
           a = { bg = gruvbox.yellow, fg = gruvbox.black, gui = 'bold' },
           b = { bg = gruvbox.lightgray, fg = gruvbox.white },
-          c = { bg = gruvbox.inactivegray, fg = gruvbox.black }
+          c = { bg = gruvbox.darkgray, fg = gruvbox.gray }
         },
         replace = {
           a = { bg = gruvbox.red, fg = gruvbox.black, gui = 'bold' },
           b = { bg = gruvbox.lightgray, fg = gruvbox.white },
-          c = { bg = gruvbox.black, fg = gruvbox.white }
+          c = { bg = gruvbox.darkgray, fg = gruvbox.gray }
         },
         command = {
           a = { bg = gruvbox.green, fg = gruvbox.black, gui = 'bold' },
           b = { bg = gruvbox.lightgray, fg = gruvbox.white },
-          c = { bg = gruvbox.inactivegray, fg = gruvbox.black }
+          c = { bg = gruvbox.darkgray, fg = gruvbox.gray }
         },
         inactive = {
           a = { bg = gruvbox.darkgray, fg = gruvbox.gray, gui = 'bold' },
