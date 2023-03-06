@@ -13,7 +13,7 @@ $all\
 
 [directory]
 style = "fg:16 bg:blue"
-repo_root_style = "fg:235 bg:blue"
+repo_root_style = "fg:235 bold bg:blue"
 before_repo_root_style = "fg:bright-blue bg:blue"
 truncate_to_repo = false
 truncation_length = 2

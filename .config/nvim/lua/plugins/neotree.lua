@@ -2,7 +2,7 @@ return {
   -- file explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
-    lazy = false,
+    event = { "VeryLazy" },
     branch = "v2.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
