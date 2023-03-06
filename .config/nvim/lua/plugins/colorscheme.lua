@@ -22,14 +22,13 @@ return {
         vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = colors.base00 })
         -- Floating windows
         vim.api.nvim_set_hl(0, "FloatBorder", { fg = colors.base03, bg = colors.base00 })
-        vim.api.nvim_set_hl(0, "CratesNvimPopupPillBorder", { fg = colors.base03, bg = colors.base00 })
         vim.api.nvim_set_hl(0, "NormalFloat", { bg = colors.base00 })
         -- Telescope: https://github.com/nvim-telescope/telescope.nvim/blob/master/plugin/telescope.lua
         vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = colors.base03 })
         vim.api.nvim_set_hl(0, "TelescopeSelection", { bg = "#262727" })
         vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { fg = colors.base0D })
         vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = colors.base0D })
-        -- -- Cmp
+        -- Cmp
         vim.api.nvim_set_hl(0, "CmpItemAbbr", { fg = colors.base05, bg = "NONE" })
         vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = colors.base0D, bg = "NONE", bold = true })
         vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = colors.base0D, bg = "NONE", bold = true })
