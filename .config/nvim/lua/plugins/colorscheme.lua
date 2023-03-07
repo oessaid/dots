@@ -34,6 +34,9 @@ return {
         vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = colors.base0D, bg = "NONE", bold = true })
         vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { fg = colors.base02, bg = "NONE", strikethrough = true })
         vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = colors.base0D, bg = "NONE", italic = true })
+        -- Command menu
+        vim.api.nvim_set_hl(0, "Pmenu", { fg = colors.base05, bg = "#262727" })
+        vim.api.nvim_set_hl(0, "PmenuSel", { fg = colors.base00, bg = colors.base0D })
       end
 
       vim.api.nvim_create_autocmd("ColorScheme", {

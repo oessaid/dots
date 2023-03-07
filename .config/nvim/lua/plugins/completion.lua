@@ -7,9 +7,9 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-nvim-lua',
-      -- 'ray-x/lsp_signature.nvim',
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'L3MON4D3/LuaSnip',
       'rafamadriz/friendly-snippets',
@@ -60,6 +60,7 @@ return {
           { name = "treesitter" },
           { name = "crates" },
           { name = "spell" },
+          { name = "cmdline" },
         },
         -- preselect = cmp.PreselectMode.Item,
 
@@ -75,6 +76,27 @@ return {
             select = true,
           }),
         },
+      })
+
+      cmp.setup.cmdline('/', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = 'buffer' }
+        }
+      })
+
+      cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = 'path' }
+        }, {
+          {
+            name = 'cmdline',
+            option = {
+              ignore_cmds = { 'Man', '!' }
+            }
+          }
+        })
       })
     end,
   }

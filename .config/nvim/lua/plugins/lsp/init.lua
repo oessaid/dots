@@ -102,18 +102,31 @@ return {
         local opts = { noremap = true, silent = true }
 
         buf_set_keymap("n", "<leader>?",
-          "<cmd> lua vim.diagnostic.open_float(nil, {focusable=false, source='always'})<cr>",
+          "<cmd> lua vim.diagnostic.open_float(nil, {focusable=false, source='always', border='rounded'})<cr>",
           opts)
         buf_set_keymap("n", "<leader>ss", ":SymbolsOutline<cr>", opts)
+
         buf_set_keymap("n", "<leader>sa", "<cmd> lua vim.lsp.buf.code_action()<cr>", opts)
-        buf_set_keymap("n", "<leader>sd", "<cmd>lua vim.lsp.buf.definition()<cr>", opts)
-        buf_set_keymap("n", "<leader>si",
+
+        buf_set_keymap("n", "<leader>sd",
+          "<cmd>lua require('telescope.builtin').lsp_definitions(require('telescope.themes').get_cursor({}))<cr>",
+          opts)
+        buf_set_keymap("n", "<leader>sp",
           "<cmd>lua require('telescope.builtin').lsp_implementations(require('telescope.themes').get_cursor({}))<cr>",
           opts)
         buf_set_keymap("n", "<leader>st",
           "<cmd>lua require('telescope.builtin').lsp_type_definitions(require('telescope.themes').get_cursor({}))<cr>",
           opts)
-        buf_set_keymap("n", "<leader>sr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>", opts)
+        buf_set_keymap("n", "<leader>sr",
+          "<cmd>lua require('telescope.builtin').lsp_references(require('telescope.themes').get_cursor({}))<cr>",
+          opts)
+        buf_set_keymap("n", "<leader>so",
+          "<cmd>lua require('telescope.builtin').lsp_outgoing_calls(require('telescope.themes').get_cursor({}))<cr>",
+          opts)
+        buf_set_keymap("n", "<leader>si",
+          "<cmd>lua require('telescope.builtin').lsp_incoming_calls(require('telescope.themes').get_cursor({}))<cr>",
+          opts)
+
         buf_set_keymap("n", "<leader>sn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
         buf_set_keymap("n", "<leader>s?", ":TroubleToggle document_diagnostics<cr><cr>", opts)
         buf_set_keymap("n", "<leader>sj", "<cmd>lua vim.diagnostic.goto_next()<cr>", opts)
@@ -121,17 +134,7 @@ return {
       end
 
       require("neodev").setup()
-      local lspconfig = require("lspconfig")
       local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-      require("mason-lspconfig").setup_handlers({
-        function(server_name)
-          lspconfig[server_name].setup({
-            on_attach = lsp_attach,
-            capabilities = lsp_capabilities,
-          })
-        end,
-      })
 
       -- Documentation in toml specification (Rust crates)
       local function show_documentation()
@@ -152,6 +155,7 @@ return {
       local null_ls = require("null-ls")
       null_ls.setup({
         on_attach = lsp_attach,
+        capabilities = lsp_capabilities,
         sources = {
           null_ls.builtins.formatting.buf,
           null_ls.builtins.formatting.stylua,
@@ -179,8 +183,8 @@ return {
       })
 
       require("lspconfig").clangd.setup({
-        -- on_attach = custom_clangd_attach,
         on_attach = lsp_attach,
+        capabilities = lsp_capabilities,
         cmd = {
           "clangd",
           "--background-index",
@@ -199,12 +203,13 @@ return {
           completeUnimported = true,
           semanticHighlighting = true,
         },
-        filetypes = { "c", "cpp", "objc", "objcpp" },
+        filetypes = { "c", "cpp" },
         single_file_support = true,
       })
 
       require("lspconfig").lua_ls.setup({
         on_attach = lsp_attach,
+        capabilities = lsp_capabilities,
         settings = {
           Lua = {
             runtime = {

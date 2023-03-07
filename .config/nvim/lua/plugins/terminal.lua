@@ -6,6 +6,7 @@ return {
   -- Terminal
   {
     "akinsho/toggleterm.nvim",
+    event = { "VeryLazy" },
     version = "*",
     config = function()
       require("toggleterm").setup({
@@ -21,8 +22,21 @@ return {
         open_mapping = [[<c-\>]],
         hide_numbers = true, -- hide the number column in toggleterm buffers
         shade_filetypes = {},
-        shade_terminals = true,
-        shading_factor = 1,     -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
+        shade_terminals = false,
+        shading_factor = 1, -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
+        highlights = {
+          -- highlights which map to a highlight group name and a table of it's values
+          -- NOTE: this is only a subset of values, any group placed here will be set for the terminal window split
+          Normal = {
+            link = 'Normal'
+          },
+          NormalFloat = {
+            link = 'NormalFloat'
+          },
+          FloatBorder = {
+            link = 'FloatBorder'
+          },
+        },
         start_in_insert = true,
         insert_mappings = true, -- whether or not the open mapping applies in insert mode
         persist_size = true,
@@ -36,14 +50,10 @@ return {
           -- the 'curved' border is a custom border type
           -- not natively supported but implemented in this plugin.
           -- border = 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
-          border = "shadow",
+          border = "rounded",
           width = 120,
           -- height = 80,
           winblend = 1,
-          highlights = {
-            border = "Normal",
-            background = "Normal",
-          },
         },
       })
 

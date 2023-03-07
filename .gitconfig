@@ -60,3 +60,6 @@
 
 [submodule]
 	recurse = true
+
+[url "git@gitlab.helsing-dev.ai:"]
+  insteadof = https://gitlab.helsing-dev.ai/

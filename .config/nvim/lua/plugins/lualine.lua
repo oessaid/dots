@@ -2,7 +2,7 @@ return {
   -- Status line
   {
     "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
     config = function()
       local conditions = {
@@ -108,7 +108,13 @@ return {
           lualine_z = {},
         },
         tabline = {
-          lualine_a = {},
+          lualine_a = {
+            {
+              require("lazy.status").updates,
+              cond = require("lazy.status").has_updates,
+              -- color = { fg = theme.blue },
+            },
+          },
           lualine_b = {
             { "tabs", mode = 0, separator = nil, padding = 1 },
           },

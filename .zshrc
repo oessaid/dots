@@ -16,7 +16,6 @@ source ~/.config/zsh-snap/znap.zsh
 # znap source zsh-users/zsh-completions
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 znap source zsh-users/zsh-autosuggestions
-znap source zsh-users/zsh-history-substring-search
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=( main brackets )
 znap source zsh-users/zsh-syntax-highlighting
@@ -24,6 +23,14 @@ znap source zsh-users/zsh-syntax-highlighting
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+
+znap source zsh-users/zsh-history-substring-search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+HISTORY_SUBSTRING_SEARCH_FUZZY=true
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=true
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=blue,fg=white,bold'
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=red,fg=white,bold'
 
 # Custom fzf command (for hidden files)
 # export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -U -l -g ""' 
@@ -88,7 +95,9 @@ alias la="exa -a --color=always --octal-permissions --git --group-directories-fi
 alias ll="exa -a --color=always --octal-permissions --git --group-directories-first --classify --long"
 alias ee="ranger"
 # Tree view: use as `lt 3 <folder>` for a 3 level tree of <folder>
-alias lt="exa -a --color=never --git --tree --octal-permissions --long --header --group-directories-first --icons"
+# alias lt="exa -a --color=never --git --tree --octal-permissions --long --header --group-directories-first --icons"
+alias lt="dust -r"
+alias tree="dust -r"
 alias cat="bat"
 alias tns="tmux new -s"
 alias tls="tmux ls"
@@ -126,3 +135,11 @@ alias fwd=forward-cli
 
 # Uncomment for profiling
 # zprof
+
+# pnpm
+export PNPM_HOME="/Users/omar.essaid/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
