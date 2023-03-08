@@ -60,7 +60,6 @@ return {
           { name = "treesitter" },
           { name = "crates" },
           { name = "spell" },
-          { name = "cmdline" },
         },
         -- preselect = cmp.PreselectMode.Item,
 

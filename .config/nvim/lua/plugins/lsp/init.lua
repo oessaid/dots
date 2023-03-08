@@ -111,7 +111,7 @@ return {
         buf_set_keymap("n", "<leader>sd",
           "<cmd>lua require('telescope.builtin').lsp_definitions(require('telescope.themes').get_cursor({}))<cr>",
           opts)
-        buf_set_keymap("n", "<leader>sp",
+        buf_set_keymap("n", "<leader>si",
           "<cmd>lua require('telescope.builtin').lsp_implementations(require('telescope.themes').get_cursor({}))<cr>",
           opts)
         buf_set_keymap("n", "<leader>st",
@@ -120,12 +120,12 @@ return {
         buf_set_keymap("n", "<leader>sr",
           "<cmd>lua require('telescope.builtin').lsp_references(require('telescope.themes').get_cursor({}))<cr>",
           opts)
-        buf_set_keymap("n", "<leader>so",
-          "<cmd>lua require('telescope.builtin').lsp_outgoing_calls(require('telescope.themes').get_cursor({}))<cr>",
-          opts)
-        buf_set_keymap("n", "<leader>si",
-          "<cmd>lua require('telescope.builtin').lsp_incoming_calls(require('telescope.themes').get_cursor({}))<cr>",
-          opts)
+        -- buf_set_keymap("n", "<leader>so",
+        --   "<cmd>lua require('telescope.builtin').lsp_outgoing_calls(require('telescope.themes').get_cursor({}))<cr>",
+        --   opts)
+        -- buf_set_keymap("n", "<leader>si",
+        --   "<cmd>lua require('telescope.builtin').lsp_incoming_calls(require('telescope.themes').get_cursor({}))<cr>",
+        --   opts)
 
         buf_set_keymap("n", "<leader>sn", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
         buf_set_keymap("n", "<leader>s?", ":TroubleToggle document_diagnostics<cr><cr>", opts)
@@ -160,25 +160,11 @@ return {
           null_ls.builtins.formatting.buf,
           null_ls.builtins.formatting.stylua,
           null_ls.builtins.formatting.shfmt,
-          null_ls.builtins.diagnostics.eslint,
+          null_ls.builtins.formatting.taplo,
           null_ls.builtins.formatting.prettier.with({
             command = "prettier",
-            filetypes = {
-              "javascript",
-              "javascriptreact",
-              "typescript",
-              "typescriptreact",
-              "vue",
-              "svelte",
-              "css",
-              "scss",
-              "html",
-              "json",
-              "yaml",
-              "markdown",
-              "toml",
-            },
           }),
+          null_ls.builtins.diagnostics.eslint,
         },
       })
 
