@@ -16,6 +16,7 @@ source ~/.config/zsh-snap/znap.zsh
 # znap source zsh-users/zsh-completions
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 znap source zsh-users/zsh-autosuggestions
+# unset ZSH_AUTOSUGGEST_USE_ASYNC
 
 ZSH_HIGHLIGHT_HIGHLIGHTERS=( main brackets )
 znap source zsh-users/zsh-syntax-highlighting
@@ -108,6 +109,8 @@ alias sysinfo="macchina"
 alias tshark="termshark"
 alias za="zathura"
 alias mdraw="monodraw"
+alias bang="gobang"
+alias ctop="ctop -i"
 
 # Rust build cache
 export RUSTC_WRAPPER=`which sccache`

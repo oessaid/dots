@@ -67,9 +67,20 @@ ctrl + alt - u : yabai -m window --space prev
 
 # close window
 hyper - w : yabai -m window --close
+hyper - q : skhd -k "cmd - q"
 
 # toggle window zoom
 hyper - z : yabai -m window --toggle zoom-fullscreen
 
 # toggle window split type
-hyper - s : yabai -m window --toggle split
+# hyper - s : yabai -m window --toggle split
+
+# convenience
+hyper - c : skhd -k "cmd - c"
+hyper - v : skhd -k "cmd - v"
+hyper - x : skhd -k "cmd - x"
+hyper - a : skhd -k "cmd - a"
+
+hyper - s : skhd -k "cmd - s"
+hyper - f : skhd -k "cmd - f"
+hyper - r : skhd -k "cmd - r"
