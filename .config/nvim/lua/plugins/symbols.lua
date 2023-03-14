@@ -1,7 +1,7 @@
 return {
   {
     'simrat39/symbols-outline.nvim',
-    event = { "BufReadPre", "BufNewFile" },
+    -- event = { "BufReadPre", "BufNewFile" },
     config = function()
       require("symbols-outline").setup({
         keymaps = {

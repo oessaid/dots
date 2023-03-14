@@ -8,6 +8,20 @@ return {
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
       'nvim-telescope/telescope-ui-select.nvim',
       "rcarriga/nvim-notify",
+      "debugloop/telescope-undo.nvim",
+    },
+    keys = {
+      {
+        "<leader>/",
+        "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find({layout_strategy='bottom_pane'})<cr>",
+        desc = ""
+      },
+      { "<leader>ff", "<cmd>lua require('telescope.builtin').find_files({hidden=true})<cr>", desc = "" },
+      { "<leader>fq", "<cmd>lua require('telescope.builtin').quickfix()<cr>",                desc = "" },
+      { "<leader>fw", "<cmd>lua require('telescope.builtin').live_grep()<cr>",               desc = "" },
+      { "<leader>fc", "<cmd>lua require('telescope.builtin').git_commits()<cr>",             desc = "" },
+      { "<leader>fb", "<cmd>lua require('telescope.builtin').git_branches()<cr>",            desc = "" },
+      { "<leader>fu", "<cmd>Telescope undo<cr>",                                             desc = "" },
     },
     config = function()
       require("telescope").setup({
@@ -20,6 +34,20 @@ return {
           },
               ["ui-select"] = {
             require("telescope.themes").get_cursor {}
+          },
+          undo = {
+            side_by_side = true,
+            layout_strategy = "vertical",
+            layout_config = {
+              preview_height = 0.8,
+            },
+            mappings = {
+              i = {
+                    ["<cr>"] = require("telescope-undo.actions").restore,
+                    ["<C-cr>"] = require("telescope-undo.actions").yank_additions,
+                    ["<S-cr>"] = require("telescope-undo.actions").yank_deletions,
+              },
+            },
           }
         },
         pickers = {
@@ -83,6 +111,7 @@ return {
       require("telescope").load_extension("fzf")
       require("telescope").load_extension("ui-select")
       require("telescope").load_extension("notify")
+      require("telescope").load_extension("undo")
     end
   },
 }

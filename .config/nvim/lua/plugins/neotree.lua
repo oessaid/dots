@@ -2,12 +2,15 @@ return {
   -- file explorer
   {
     "nvim-neo-tree/neo-tree.nvim",
-    event = { "BufReadPre", "BufNewFile", "CmdlineEnter" },
+    -- event = { "BufReadPre", "BufNewFile", "CmdlineEnter" },
     branch = "v2.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
+    },
+    keys = {
+      { "<leader>e", ":Neotree<cr>" }
     },
     config = function()
       vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
@@ -19,7 +22,7 @@ return {
         enable_diagnostics = true,
         sort_case_insensitive = false, -- used when sorting files and directories in the tree
         source_selector = {
-          winbar = true,
+          winbar = false,
         },
         default_component_configs = {
           container = {

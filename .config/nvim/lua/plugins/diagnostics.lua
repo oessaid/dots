@@ -3,6 +3,9 @@ return {
   {
     "folke/trouble.nvim",
     dependencies = "nvim-tree/nvim-web-devicons",
+    keys = {
+      { "<leader>s?", ":TroubleToggle document_diagnostics<cr>" }
+    },
     config = function()
       vim.fn.sign_define("DiagnosticSignError", {
         texthl = "DiagnosticSignError",

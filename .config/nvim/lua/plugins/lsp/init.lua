@@ -4,6 +4,7 @@ return {
     'neovim/nvim-lspconfig',
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
+      { 'nvim-telescope/telescope.nvim' },
       { "folke/neodev.nvim" },
       { 'williamboman/mason.nvim' },
       { 'williamboman/mason-lspconfig.nvim' },
@@ -18,6 +19,11 @@ return {
       { "hrsh7th/nvim-cmp" },
       { "j-hui/fidget.nvim" },
       { "SmiteshP/nvim-navic" },
+
+      { "folke/trouble.nvim" },
+      { "stevearc/dressing.nvim" },
+
+      { 'simrat39/symbols-outline.nvim' },
     },
     config = function()
       require("fidget").setup {}

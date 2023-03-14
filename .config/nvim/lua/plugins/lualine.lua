@@ -92,12 +92,14 @@ return {
             "filetype",
           },
           lualine_y = {
-            { "progress", padding = { right = 1, left = 0 } },
+            { "progress", padding = { right = 1, left = 1 } },
             { "location", padding = { right = 1, left = 0 } },
             "encoding",
             { "fileformat", icons_enabled = false },
           },
-          lualine_z = {},
+          lualine_z = {
+            { "branch" },
+          },
         },
         inactive_sections = {
           lualine_a = {},
@@ -122,10 +124,9 @@ return {
             { require("nvim-navic").get_location, cond = require("nvim-navic").is_available },
           },
           lualine_x = {
-            { "filename", file_status = true, path = 3 },
           },
           lualine_y = {
-            { "branch" },
+            { "filename", file_status = true, path = 3 },
           },
           lualine_z = {
             {

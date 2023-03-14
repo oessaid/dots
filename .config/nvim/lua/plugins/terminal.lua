@@ -6,8 +6,11 @@ return {
   -- Terminal
   {
     "akinsho/toggleterm.nvim",
-    event = { "VeryLazy" },
+    -- event = { "VeryLazy" },
     version = "*",
+    keys = {
+      { "<leader>t", ":ToggleTerm<cr>" }
+    },
     config = function()
       require("toggleterm").setup({
         -- size can be a number or function which is passed the current terminal
@@ -40,7 +43,7 @@ return {
         start_in_insert = true,
         insert_mappings = true, -- whether or not the open mapping applies in insert mode
         persist_size = true,
-        direction = "float",    -- 'vertical' | 'horizontal' | 'tab' | 'float',
+        direction = "vertical", -- 'vertical' | 'horizontal' | 'tab' | 'float',
         close_on_exit = true,   -- close the terminal window when the process exits
         shell = vim.o.shell,    -- change the default shell
         -- This field is only relevant if direction is set to 'float'
@@ -51,7 +54,7 @@ return {
           -- not natively supported but implemented in this plugin.
           -- border = 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
           border = "rounded",
-          width = 120,
+          width = 150,
           -- height = 80,
           winblend = 1,
         },

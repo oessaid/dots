@@ -37,6 +37,11 @@ return {
         -- Command menu
         vim.api.nvim_set_hl(0, "Pmenu", { fg = colors.base05, bg = "#262727" })
         vim.api.nvim_set_hl(0, "PmenuSel", { fg = colors.base00, bg = colors.base0D })
+        -- Rust
+        vim.api.nvim_set_hl(0, "rustReservedKeyword",
+          { fg = colors.base08, bg = "NONE", bold = true, italic = true })
+        -- vim.api.nvim_set_hl(0, "rustInvalidBareKeyword",
+        --   { fg = colors.base08, bg = colors.base0F, bold = true})
       end
 
       vim.api.nvim_create_autocmd("ColorScheme", {

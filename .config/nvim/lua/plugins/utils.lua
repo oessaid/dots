@@ -16,7 +16,7 @@ return {
   },
   {
     "stevearc/dressing.nvim",
-    event = { "BufReadPre", "BufNewFile" },
+    -- event = { "BufReadPre", "BufNewFile" },
     config = function()
       require('dressing').setup({
         select = {
@@ -35,6 +35,25 @@ return {
         render = "compact",
       })
       vim.notify = require("notify")
+    end
+  },
+  {
+    "tversteeg/registers.nvim",
+    name = "registers",
+    keys = {
+      { "\"",    mode = { "n", "v" } },
+      { "<C-R>", mode = "i" }
+    },
+    -- cmd = "Registers",
+    config = function()
+      require("registers").setup({
+        window = {
+          max_width = 100,
+          highlight_cursorline = true,
+          border = "rounded",
+          transparency = 0,
+        },
+      })
     end
   }
 }
