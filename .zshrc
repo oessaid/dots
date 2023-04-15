@@ -106,11 +106,12 @@ alias tat="tmux a -t"
 alias cf="cd \$(find . -type d -print | fzf)"
 alias cw="cd /mnt/c/Users/omare/"
 alias sysinfo="macchina"
-alias tshark="termshark"
+alias tshark="termshark -t ad"
 alias za="zathura"
-alias mdraw="monodraw"
+alias mdraw="monodraw -u"
 alias bang="gobang"
 alias ctop="ctop -i"
+alias bw="brew"
 
 # Rust build cache
 export RUSTC_WRAPPER=`which sccache`

@@ -73,7 +73,7 @@ hyper - q : skhd -k "cmd - q"
 hyper - z : yabai -m window --toggle zoom-fullscreen
 
 # toggle window split type
-# hyper - s : yabai -m window --toggle split
+hyper - t : yabai -m window --toggle split
 
 # convenience
 hyper - c : skhd -k "cmd - c"
