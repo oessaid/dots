@@ -2,7 +2,7 @@ return {
   -- LSP support
   {
     'neovim/nvim-lspconfig',
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       { 'nvim-telescope/telescope.nvim' },
       { "folke/neodev.nvim" },
@@ -57,6 +57,9 @@ return {
           Event = ' ',
           Operator = ' ',
           TypeParameter = ' '
+        },
+        lsp = {
+          auto_attach = true
         }
       }
 
@@ -125,6 +128,9 @@ return {
           opts)
         buf_set_keymap("n", "<leader>sr",
           "<cmd>lua require('telescope.builtin').lsp_references(require('telescope.themes').get_cursor({}))<cr>",
+          opts)
+        buf_set_keymap("n", "<leader>se",
+          "<cmd>lua require('telescope.builtin').diagnostics(require('telescope.themes').get_ivy({}))<cr>",
           opts)
         -- buf_set_keymap("n", "<leader>so",
         --   "<cmd>lua require('telescope.builtin').lsp_outgoing_calls(require('telescope.themes').get_cursor({}))<cr>",
@@ -199,6 +205,11 @@ return {
         single_file_support = true,
       })
 
+      require('lspconfig').pyright.setup({
+        on_attach = lsp_attach,
+        capabilities = lsp_capabilities,
+      })
+
       require("lspconfig").lua_ls.setup({
         on_attach = lsp_attach,
         capabilities = lsp_capabilities,
@@ -222,12 +233,11 @@ return {
 
       require("rust-tools").setup({
         tools = {
-          -- rust-tools options
-          autoSetHints = true,
           runnables = {
             use_telescope = true,
           },
           inlay_hints = {
+            auto = true,
             only_current_line = false,
             show_parameter_hints = true,
             parameter_hints_prefix = " ",
@@ -248,6 +258,9 @@ return {
               checkOnSave = {
                 command = "clippy",
               },
+              cargo = {
+                allFeatures = true
+              }
             },
           },
         },

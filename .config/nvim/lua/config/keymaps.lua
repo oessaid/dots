@@ -2,6 +2,8 @@ vim.keymap.set("i", "jk", "<Esc>") -- jk to escape
 
 -- general maps
 vim.keymap.set("n", "st", ":tab split<CR>")
+vim.keymap.set("n", "<leader>i", "gt")
+vim.keymap.set("n", "<leader>u", "gT")
 vim.keymap.set("n", "<leader>\\", "<C-W>v")
 vim.keymap.set("n", "<leader>-", "<C-W>s")
 vim.keymap.set("n", "<leader>=", "<C-W>=")

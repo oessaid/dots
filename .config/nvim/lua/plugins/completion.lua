@@ -18,13 +18,28 @@ return {
     config = function()
       local cmp = require("cmp")
       cmp.setup({
+        enabled = function()
+          if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
+            return false
+          end
+          -- disable completion in comments
+          local context = require 'cmp.config.context'
+          -- keep command mode completion enabled when cursor is in a comment
+          if vim.api.nvim_get_mode().mode == 'c' then
+            return true
+          else
+            return not context.in_treesitter_capture("comment")
+                and not context.in_syntax_group("Comment")
+                and not context.in_syntax_group("Special")
+          end
+        end,
         completion = {
           completeopt = "menu,menuone,noinsert",
         },
         window = {
           completion = cmp.config.window.bordered({
             scrollbar = false,
-            winhighlight = "Normal:NormalFloat,Search:None",
+            winhighlight = "Normal:NormalFloat,Search:None,CursorLine:Visual",
             col_offset = -3,
             side_padding = 0,
           }),
@@ -55,7 +70,10 @@ return {
           { name = "path" },
           { name = "luasnip" },
           { name = "nvim_lua" },
-          { name = "buffer" },
+          {
+            name = "buffer",
+            keyword_length = 3
+          },
           { name = "calc" },
           { name = "treesitter" },
           { name = "crates" },
@@ -64,16 +82,21 @@ return {
         -- preselect = cmp.PreselectMode.Item,
 
         mapping = {
-              ["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-              ["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
-              ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-              ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+              ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i", "c" }),
+              ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { "i", "c" }),
+              ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }), { "i", "c" }),
+              ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }), { "i",
+            "c" }),
               ["<C-k>"] = cmp.mapping.scroll_docs(-4),
               ["<C-j>"] = cmp.mapping.scroll_docs(4),
-              ["<CR>"] = cmp.mapping.confirm({
+              ["<CR>"] = cmp.mapping(cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
-          }),
+          }), { "i" }),
+              ["<Right>"] = cmp.mapping(cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+          }), { "c" }),
         },
       })
 
@@ -85,7 +108,7 @@ return {
       })
 
       cmp.setup.cmdline(':', {
-        mapping = cmp.mapping.preset.cmdline(),
+        -- mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
           { name = 'path' }
         }, {

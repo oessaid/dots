@@ -75,7 +75,11 @@ return {
         sections = {
           lualine_a = { "mode" },
           lualine_b = {
-            { "filename", file_status = true, path = 1 },
+            {
+              "filename",
+              file_status = true,
+              path = 1
+            },
           },
           lualine_c = {
             {
@@ -116,12 +120,24 @@ return {
               cond = require("lazy.status").has_updates,
               -- color = { fg = theme.blue },
             },
+            {
+              "tabs",
+              mode = 0,
+              separator = nil,
+              padding = 1
+            },
           },
           lualine_b = {
-            { "tabs", mode = 0, separator = nil, padding = 1 },
+            {
+              function()
+                return require("nvim-navic").get_location()
+              end,
+              cond = function()
+                return require("nvim-navic").is_available()
+              end
+            },
           },
           lualine_c = {
-            { require("nvim-navic").get_location, cond = require("nvim-navic").is_available },
           },
           lualine_x = {
           },

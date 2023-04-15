@@ -40,8 +40,30 @@ return {
         -- Rust
         vim.api.nvim_set_hl(0, "rustReservedKeyword",
           { fg = colors.base08, bg = "NONE", bold = true, italic = true })
-        -- vim.api.nvim_set_hl(0, "rustInvalidBareKeyword",
-        --   { fg = colors.base08, bg = colors.base0F, bold = true})
+        vim.api.nvim_set_hl(0, "rustInvalidBareKeyword",
+          { fg = colors.base08, bg = "NONE", bold = true, italic = true })
+
+        local links = {
+              ['@lsp.type.namespace'] = '@namespace',
+              ['@lsp.type.type'] = '@type',
+              ['@lsp.type.class'] = '@type',
+              ['@lsp.type.enum'] = '@type',
+              ['@lsp.type.interface'] = '@type',
+              ['@lsp.type.struct'] = '@structure',
+              ['@lsp.type.parameter'] = '@parameter',
+              ['@lsp.type.property'] = '@property',
+              ['@lsp.type.enumMember'] = '@constant',
+              ['@lsp.type.function'] = '@function',
+              ['@lsp.type.method'] = '@method',
+              ['@lsp.type.macro'] = '@macro',
+              ['@lsp.type.decorator'] = '@function',
+          -- use treesitter styles
+              ['@lsp.type.comment.rust'] = '',
+              ['@lsp.type.variable'] = '',
+        }
+        for newgroup, oldgroup in pairs(links) do
+          vim.api.nvim_set_hl(0, newgroup, { link = oldgroup, default = true })
+        end
       end
 
       vim.api.nvim_create_autocmd("ColorScheme", {
@@ -56,7 +78,7 @@ return {
         ts_rainbow = false,
         cmp = true,
         illuminate = false,
-        lsp_semantic = false,
+        lsp_semantic = true,
       })
       vim.cmd("colorscheme base16-gruvbox-dark-hard")
       -- vim.cmd("colorscheme base16-gruvbox-dark-medium")

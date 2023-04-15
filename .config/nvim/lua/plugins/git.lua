@@ -4,13 +4,13 @@ return {
     event = { "BufReadPre", "BufNewFile", "CmdlineEnter" },
     keys = {
       { "<leader>gs",  ":Git<cr>",         desc = "Git" },
-      { "<leader>ggd", ":Gdiffsplit!<cr>", desc = "Git diff" },
+      { "<leader>gc",  ":Gdiffsplit!<cr>", desc = "Git diff" },
       { "<leader>ggw", ":Gwrite<cr>",      desc = "Git write" }
     },
   },
   {
     'lewis6991/gitsigns.nvim',
-    -- event = { "BufReadPre", "BufNewFile", "CmdlineEnter" },
+    event = { "BufReadPre", "BufNewFile", "CmdlineEnter" },
     keys = {
       { "<leader>gj",  "<cmd>lua require'gitsigns.actions'.next_hunk()<CR>",   desc = "Next hunk" },
       { "<leader>gk",  "<cmd>lua require'gitsigns.actions'.prev_hunk()<CR>",   desc = "Previous hunk" },
@@ -31,8 +31,8 @@ return {
     "sindrets/diffview.nvim",
     -- event = { "BufReadPre", "BufNewFile", "CmdlineEnter" },
     keys = {
-      { "<leader>gH",  ":DiffviewFileHistory<cr>", desc = "Diff file history" },
-      { "<leader>ggp", ":DiffviewOpen<cr>",        desc = "Diff view open" },
+      { "<leader>gH", ":DiffviewFileHistory<cr>", desc = "Diff file history" },
+      { "<leader>gd", ":DiffviewOpen ",           desc = "Diff view open" },
     }
   },
   {
