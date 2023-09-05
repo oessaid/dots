@@ -91,7 +91,7 @@ alias dots='/usr/bin/git --git-dir=$HOME/.dots/ --work-tree=$HOME'
 alias zshconfig="nvim ~/.zshrc"
 alias vim="nvim"
 alias vi="nvim"
-alias ls="exa --color=always --octal-permissions --git --group-directories-first --classify --long"
+# alias ls="exa --color=always --octal-permissions --git --group-directories-first --classify --long"
 alias la="exa -a --color=always --octal-permissions --git --group-directories-first --classify --long"
 alias ll="exa -a --color=always --octal-permissions --git --group-directories-first --classify --long"
 alias ee="ranger"
@@ -147,3 +147,53 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+# Poetry
+# export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+# GStreamer
+#
+# With official binaries
+# export PATH=/Library/Frameworks/GStreamer.framework/Commands:$PATH
+# export PATH=/Library/Frameworks/GStreamer.framework/Versions/1.0/bin${PATH:+:$PATH}
+# export PKG_CONFIG_PATH=/Library/Frameworks/GStreamer.framework/Libraries/pkgconfig/
+#
+# With homebrew install
+export PKG_CONFIG_PATH=/opt/homebrew/Cellar/gstreamer/1.22.2/lib/pkgconfig/
+
+# Homebrew lib paths
+export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+eval "$(direnv hook zsh)"
+eval "$(direnv hook zsh)"
+
+# Certificates
+export REQUESTS_CA_BUNDLE=~/helsing-cert-bundle.pem
+export SSL_CERT_FILE=~/helsing-cert-bundle.pem
+
+# Rsync
+REMOTE_USER="coder"
+REMOTE_HOST="coder.omaressaid.main"
+
+rpull() {
+    local current_folder=$(basename "$(pwd)")
+
+    if [[ "$(pwd)" == "$HOME/dev/remote/$current_folder" ]]; then
+        rsync -avz $REMOTE_USER@$REMOTE_HOST:~/dev/$current_folder/ ~/dev/remote/$current_folder/
+    else
+        echo "Error: This doesn't seem to be a valid rsync directory."
+    fi
+}
+
+rpush() {
+    local current_folder=$(basename "$(pwd)")
+
+    if [[ "$(pwd)" == "$HOME/dev/remote/$current_folder" ]]; then
+        rsync -avz ~/dev/remote/$current_folder/ $REMOTE_USER@$REMOTE_HOST:~/dev/$current_folder/
+    else
+        echo "Error: This doesn't seem to be a valid rsync directory."
+    fi
+}
+
+autoload -Uz compinit
+zstyle ':completion:*' menu select

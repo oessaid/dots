@@ -2,7 +2,7 @@ return {
   -- Telescope
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.1',
+    -- tag = '0.1.1',
     dependencies = {
       'nvim-lua/plenary.nvim',
       { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
@@ -82,7 +82,9 @@ return {
             horizontal = { mirror = false },
             vertical = { mirror = false },
           },
-          file_ignore_patterns = { ".git/", ".meta" },
+          file_ignore_patterns = { ".git/",
+            --".meta"
+          },
           winblend = 1,
           border = true,
           borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },

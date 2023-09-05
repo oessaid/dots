@@ -20,7 +20,7 @@
   fa = fetch --all --prune
   pa = pull --all
   ba = branch -v --all
-  info = !"onefetch --show-logo=never"
+  info = !"onefetch --no-art"
 
 [core]
   pager = delta
@@ -52,14 +52,14 @@
 [init]
 	defaultBranch = main
 
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-
 [submodule]
 	recurse = true
 
 [url "git@gitlab.helsing-dev.ai:"]
   insteadof = https://gitlab.helsing-dev.ai/
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
